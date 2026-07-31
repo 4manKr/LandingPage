@@ -7,6 +7,20 @@
   <meta name="theme-color" content="#071b33">
   <title>Know Your Chances</title>
   <link rel="icon" type="image/png" href="assets/tab-india-logo-stacked.png">
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1936732150355851');
+    fbq('track', 'PageView');
+  </script>
+  <!-- End Meta Pixel Code -->
   <link rel="apple-touch-icon" href="assets/tab-india-logo-stacked.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,9 +53,9 @@
     }
     .hero-mesh {
       background:
-        radial-gradient(circle at 80% 16%, rgba(241,91,42,.13), transparent 29%),
-        radial-gradient(circle at 15% 43%, rgba(21,74,115,.10), transparent 30%),
-        linear-gradient(135deg, #ffffff 0%, #f2f7fb 58%, #fff8f4 100%);
+        radial-gradient(circle at 88% 12%, rgba(241,91,42,.16), transparent 27%),
+        radial-gradient(circle at 8% 78%, rgba(21,74,115,.11), transparent 31%),
+        linear-gradient(125deg, #ffffff 0%, #f3f8fc 56%, #fff5ef 100%);
     }
     .beam {
       position: absolute; width: 42rem; height: 1px; opacity: .24;
@@ -62,6 +76,27 @@
       animation: shine 7s linear infinite;
     }
     .hero-title { font-family: Manrope, Inter, sans-serif; }
+    .hero-last-line { display: block; margin-top: .18em; font-size: .58em; line-height: 1.2; letter-spacing: -.035em; white-space: nowrap; }
+    .hero-layout { min-height: 720px; }
+    .hero-copy { position: relative; z-index: 10; }
+    .decision-flow {
+      display: inline-flex; align-items: center; gap: 10px; color: #52647a;
+      font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .decision-flow i { display: block; width: 24px; height: 1px; background: rgba(21,74,115,.24); }
+    .decision-flow b { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+    .decision-flow b::before { content: ""; width: 7px; height: 7px; border-radius: 999px; background: var(--orange); }
+    .hero-orbit {
+      position: absolute; left: 50%; top: 50%; width: min(88%, 560px); aspect-ratio: 1;
+      transform: translate(-50%,-50%); border: 1px solid rgba(21,74,115,.13); border-radius: 50%;
+    }
+    .hero-orbit::before { content: ""; position: absolute; inset: 12%; border: 1px dashed rgba(241,91,42,.18); border-radius: 50%; }
+    .hero-orbit::after {
+      content: ""; position: absolute; left: 50%; top: -5px; width: 10px; height: 10px;
+      border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 7px rgba(241,91,42,.10);
+      transform-origin: 0 calc(50% + min(44vw,280px)); animation: orbitPulse 9s linear infinite;
+    }
+    @keyframes orbitPulse { to { transform: rotate(360deg); } }
     .safe-text {
       display: inline-block;
       line-height: 1.16;
@@ -163,6 +198,32 @@
       display: block; width: 100%; aspect-ratio: 16/10;
       object-fit: cover; object-position: top; border-radius: 10px;
     }
+    .screen-reveal {
+      position: relative;
+      clip-path: inset(0 100% 0 0 round 1rem);
+      transform: perspective(1100px) rotateY(7deg) translateX(-20px) scale(.98);
+      transform-origin: left center;
+      transition: clip-path .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);
+      will-change: transform, clip-path;
+    }
+    .screen-reveal.screen-right {
+      clip-path: inset(0 0 0 100% round 1rem);
+      transform: perspective(1100px) rotateY(-7deg) translateX(20px) scale(.98);
+      transform-origin: right center;
+    }
+    .reveal.visible .screen-reveal {
+      clip-path: inset(0 0 0 0 round 1rem);
+      transform: perspective(1100px) rotateY(0) translateX(0) scale(1);
+    }
+    .screen-reveal img { transform: scale(1.045); transition: transform 1s cubic-bezier(.2,.8,.2,1); }
+    .reveal.visible .screen-reveal img { transform: scale(1); }
+    .screen-reveal::after {
+      content: ""; position: absolute; inset: -12%; z-index: 2;
+      background: linear-gradient(110deg, transparent 38%, rgba(241,91,42,.18) 47%, rgba(255,255,255,.7) 52%, transparent 62%);
+      transform: translateX(-120%); pointer-events: none;
+    }
+    .reveal.visible .screen-reveal::after { animation: screen-scan .9s .28s ease-out both; }
+    @keyframes screen-scan { to { transform: translateX(120%); } }
     .check-icon { box-shadow: inset 0 0 0 1px rgba(241,91,42,.28); }
     .cta-sheen { position: relative; isolation: isolate; overflow: hidden; }
     .cta-sheen::after {
@@ -181,6 +242,10 @@
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.visible { opacity: 1; transform: none; }
     @media (max-width: 767px) {
+      .hero-last-line { font-size: .53em; }
+      .hero-layout { min-height: auto; }
+      .decision-flow { gap: 7px; font-size: 9px; letter-spacing: .05em; }
+      .decision-flow i { width: 12px; }
       .hero-device-stage { min-height: 285px; }
       .hero-laptop { width: 74%; margin-left: -16%; }
       .laptop-lid { padding: 6px 6px 9px; border-radius: 10px 10px 4px 4px; }
@@ -196,42 +261,50 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; }
+      .screen-reveal, .screen-reveal.screen-right { clip-path: none; transform: none; }
+      .screen-reveal img { transform: none; }
+      .screen-reveal::after { display: none; }
     }
   </style>
 </head>
 <body>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1936732150355851&amp;ev=PageView&amp;noscript=1" alt=""></noscript>
   <a href="#main" class="fixed left-4 top-4 z-[100] -translate-y-24 rounded-md bg-white px-4 py-3 font-bold text-navy shadow-xl transition focus:translate-y-0">Skip to content</a>
 
   <main id="main">
-    <section class="hero-mesh noise relative min-h-[790px] overflow-hidden text-navy sm:min-h-[920px] lg:min-h-[850px]">
+    <section class="hero-mesh noise relative overflow-hidden text-navy">
       <div class="dot-field absolute inset-0"></div>
-      <div class="absolute left-1/2 top-0 h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-bluebrand/[.05] blur-3xl"></div>
+      <div class="absolute -right-24 top-0 h-[520px] w-[760px] rounded-full bg-orangebrand/[.05] blur-3xl"></div>
 
-      <div class="relative z-10 mx-auto max-w-7xl px-5 pb-20 pt-8 sm:px-8 sm:pt-10 lg:px-10">
-        <div class="flex justify-center">
-          <img src="assets/tab-india-logo-horizontal.png" width="1536" height="1536" alt="TAB India" class="h-20 w-64 object-cover sm:h-24 sm:w-80" style="filter:drop-shadow(0 4px 12px rgba(0,0,0,.22))">
-        </div>
-
-        <div class="mx-auto mt-8 max-w-5xl text-center sm:mt-10">
-          <h1 class="hero-title text-[2.6rem] font-extrabold leading-[1.04] tracking-[-.055em] sm:text-6xl lg:text-[4.65rem]" aria-label="Know your MBBS and BDS college chances in a minute.">
+      <div class="hero-layout relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-5 pb-16 pt-6 sm:px-8 sm:pb-20 sm:pt-8 lg:grid-cols-[.88fr_1.12fr] lg:gap-4 lg:px-10 lg:py-10">
+        <div class="hero-copy text-center lg:text-left">
+          <div class="flex justify-center lg:justify-start">
+            <img src="assets/tab-india-logo-horizontal.png" width="1536" height="1536" alt="TAB India" class="h-16 w-52 object-cover sm:h-20 sm:w-64" style="filter:drop-shadow(0 4px 12px rgba(0,0,0,.15))">
+          </div>
+          <p class="eyebrow mt-6 text-[10px] font-extrabold uppercase text-orangebrand sm:text-xs">NEET UG decision intelligence</p>
+          <h1 class="hero-title mt-4 text-[2.8rem] font-extrabold leading-[1.02] tracking-[-.055em] sm:text-[4rem] lg:text-[4.45rem]" aria-label="Know your MBBS and BDS college chances in a minute.">
             <span class="block">Know your</span>
             <span class="block">
               <span id="degree-word" class="flip-word gradient-text" aria-hidden="true">MBBS</span>
             </span>
-            <span class="block"><span class="safe-text gradient-text">college chances</span> in a minute.</span>
+            <span class="hero-last-line"><span class="safe-text gradient-text">college chances</span> in a minute.</span>
           </h1>
-          <p class="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+          <p class="mx-auto mt-6 max-w-xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8 lg:mx-0">
             Get data-backed college predictions matched to your rank, quota and budget.
           </p>
-          <div class="mt-8 flex justify-center">
+          <div class="mt-8 flex justify-center lg:justify-start">
             <a href="#pricing" class="cta-sheen flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-orangebrand px-8 py-4 text-base font-extrabold text-white shadow-[0_14px_38px_rgba(241,91,42,.28)] transition hover:bg-orange-500 focus:outline-none focus:ring-4 focus:ring-orange-300/40 sm:w-auto">
               Check My College Chances
               <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
+          <div class="mt-7 flex justify-center lg:justify-start" aria-label="Prediction process: rank mapped, quota checked, matches ready">
+            <div class="decision-flow" aria-hidden="true"><b>Rank mapped</b><i></i><b>Quota checked</b><i></i><b>Matches ready</b></div>
+          </div>
         </div>
 
-        <div class="monitor-scene relative mx-auto mt-14 max-w-6xl sm:mt-16">
+        <div class="monitor-scene relative mx-auto w-full max-w-3xl">
+          <div class="hero-orbit" aria-hidden="true"></div>
           <div class="hero-device-stage">
             <div class="hero-laptop">
               <div class="laptop">
@@ -287,7 +360,7 @@
       <section class="border-t border-bluebrand/10 bg-white py-16 sm:py-24">
         <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.28fr_.72fr] lg:gap-16 lg:px-10">
           <figure class="reveal order-2 lg:order-1">
-            <div class="open-preview rotate-[-.6deg] rounded-2xl"><img src="assets/eligibility-check-desktop.jpeg" width="2560" height="1600" alt="TAB India Eligibility Check dashboard" loading="lazy"></div>
+            <div class="open-preview screen-reveal rounded-2xl"><img src="assets/eligibility-check-desktop.jpeg" width="2560" height="1600" alt="TAB India Eligibility Check dashboard" loading="lazy"></div>
           </figure>
           <div class="reveal order-1 lg:order-2">
             <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">01 · Eligibility Check</p>
@@ -305,7 +378,7 @@
             <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">See personalized ambitious, realistic and safer college possibilities based on your rank, category, quota eligibility and budget.</p>
           </div>
           <figure class="reveal">
-            <div class="open-preview rotate-[.6deg] rounded-2xl"><img src="assets/college-chances-desktop.jpeg" width="2560" height="1600" alt="TAB India College Chances dashboard" loading="lazy"></div>
+            <div class="open-preview screen-reveal screen-right rounded-2xl"><img src="assets/college-chances-desktop.jpeg" width="2560" height="1600" alt="TAB India College Chances dashboard" loading="lazy"></div>
           </figure>
         </div>
       </section>
@@ -313,7 +386,7 @@
       <section class="border-t border-bluebrand/10 bg-white py-16 sm:py-24">
         <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.28fr_.72fr] lg:gap-16 lg:px-10">
           <figure class="reveal order-2 lg:order-1">
-            <div class="open-preview rotate-[-.6deg] rounded-2xl"><img src="assets/closing-cutoff-desktop.jpeg" width="2560" height="1600" alt="TAB India Closing Cutoff Tracker" loading="lazy"></div>
+            <div class="open-preview screen-reveal rounded-2xl"><img src="assets/closing-cutoff-desktop.jpeg" width="2560" height="1600" alt="TAB India Closing Cutoff Tracker" loading="lazy"></div>
           </figure>
           <div class="reveal order-1 lg:order-2">
             <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">03 · Cutoff Tracker</p>
@@ -331,7 +404,7 @@
             <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">Explore verified fees, seat matrices, bonds, infrastructure details and other essential information across 1,100+ colleges.</p>
           </div>
           <figure class="reveal">
-            <div class="open-preview rotate-[.6deg] rounded-2xl"><img src="assets/colleges-desktop.jpeg" width="2560" height="1600" alt="TAB India Medical College Directory" loading="lazy"></div>
+            <div class="open-preview screen-reveal screen-right rounded-2xl"><img src="assets/colleges-desktop.jpeg" width="2560" height="1600" alt="TAB India Medical College Directory" loading="lazy"></div>
           </figure>
         </div>
       </section>
@@ -339,7 +412,7 @@
       <section class="border-y border-bluebrand/10 bg-white py-16 sm:py-24">
         <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.28fr_.72fr] lg:gap-16 lg:px-10">
           <figure class="reveal order-2 lg:order-1">
-            <div class="open-preview rotate-[-.6deg] rounded-2xl"><img src="assets/content-desktop.jpeg" width="2560" height="1600" alt="TAB India Counselling Content library" loading="lazy"></div>
+            <div class="open-preview screen-reveal rounded-2xl"><img src="assets/content-desktop.jpeg" width="2560" height="1600" alt="TAB India Counselling Content library" loading="lazy"></div>
           </figure>
           <div class="reveal order-1 lg:order-2">
             <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">05 · Content</p>
