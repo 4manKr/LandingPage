@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Data-backed NEET UG college predictions, cutoff intelligence and counselling decision support from TAB India.">
   <meta name="theme-color" content="#071b33">
-  <title>Know Your Chances</title>
+  <title>Know Your Chances · TAB India</title>
   <link rel="icon" type="image/png" href="assets/tab-india-logo-stacked.png">
   <!-- Meta Pixel Code -->
   <script>
@@ -24,14 +24,25 @@
   <link rel="apple-touch-icon" href="assets/tab-india-logo-stacked.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@600;700;800;900&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ["Inter", "sans-serif"] },
-          colors: { navy: "#071b33", bluebrand: "#154a73", orangebrand: "#f15b2a", mint: "#f15b2a" }
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            display: ["Manrope", "Inter", "sans-serif"],
+            serif: ["Fraunces", "Georgia", "serif"]
+          },
+          colors: {
+            navy: "#071b33",
+            bluebrand: "#154a73",
+            orangebrand: "#f15b2a",
+            mint: "#f15b2a",
+            gold: "#d4a24c",
+            ink: "#0a1d36"
+          }
         }
       }
     }
@@ -42,25 +53,25 @@
       --blue: #154a73;
       --orange: #f15b2a;
       --mint: #f15b2a;
+      --gold: #d4a24c;
       --paper: #f7f9fc;
       --line: rgba(21,74,115,.13);
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { margin: 0; overflow-x: hidden; background: #fff; color: var(--navy); font-family: Inter, sans-serif; }
+    body { margin: 0; overflow-x: hidden; background: #fff; color: var(--navy); font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(241,91,42,.22); color: var(--navy); }
+
+    /* ── Ambient textures ─────────────────── */
     .noise {
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
     }
     .hero-mesh {
       background:
-        radial-gradient(circle at 88% 12%, rgba(241,91,42,.16), transparent 27%),
-        radial-gradient(circle at 8% 78%, rgba(21,74,115,.11), transparent 31%),
+        radial-gradient(circle at 88% 12%, rgba(241,91,42,.18), transparent 27%),
+        radial-gradient(circle at 8% 78%, rgba(21,74,115,.12), transparent 31%),
+        radial-gradient(circle at 50% 100%, rgba(212,162,76,.10), transparent 42%),
         linear-gradient(125deg, #ffffff 0%, #f3f8fc 56%, #fff5ef 100%);
-    }
-    .beam {
-      position: absolute; width: 42rem; height: 1px; opacity: .24;
-      background: linear-gradient(90deg, transparent, #7ee7c2, transparent);
-      transform: rotate(-22deg);
     }
     .dot-field {
       background-image: radial-gradient(rgba(21,74,115,.13) 1px, transparent 1px);
@@ -68,6 +79,16 @@
       -webkit-mask-image: linear-gradient(to bottom, black, transparent 86%);
       mask-image: linear-gradient(to bottom, black, transparent 86%);
     }
+    .grid-lines {
+      background-image:
+        linear-gradient(to right, rgba(21,74,115,.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(21,74,115,.05) 1px, transparent 1px);
+      background-size: 64px 64px;
+      -webkit-mask-image: radial-gradient(circle at center, black 20%, transparent 78%);
+      mask-image: radial-gradient(circle at center, black 20%, transparent 78%);
+    }
+
+    /* ── Typography flourishes ────────────── */
     .eyebrow { letter-spacing: .19em; }
     .gradient-text {
       color: transparent;
@@ -75,10 +96,47 @@
       background-size: 200% auto; -webkit-background-clip: text; background-clip: text;
       animation: shine 7s linear infinite;
     }
+    .gold-text {
+      color: transparent;
+      background: linear-gradient(110deg, #b6842d 0%, #f4d17a 45%, #b6842d 100%);
+      background-size: 200% auto; -webkit-background-clip: text; background-clip: text;
+      animation: shine 6s linear infinite;
+      display: inline-block;
+      padding: .08em .12em .22em;
+      margin: -.08em -.12em -.06em;
+      line-height: 1.15;
+    }
     .hero-title { font-family: Manrope, Inter, sans-serif; }
     .hero-last-line { display: block; margin-top: .18em; font-size: .58em; line-height: 1.2; letter-spacing: -.035em; white-space: nowrap; }
     .hero-layout { min-height: 720px; }
     .hero-copy { position: relative; z-index: 10; }
+    .serif-accent {
+      font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 500; letter-spacing: -.01em;
+      display: inline-block;
+      padding: .04em .1em .18em .04em;
+      margin: -.04em -.1em -.06em -.04em;
+      line-height: 1.15;
+    }
+
+    /* ── Trust / status pill ──────────────── */
+    .trust-pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,.72); backdrop-filter: blur(14px);
+      border: 1px solid rgba(21,74,115,.14);
+      box-shadow: 0 8px 22px rgba(7,27,51,.06);
+      padding: 8px 14px 8px 12px; border-radius: 999px;
+      color: #223a5a; font-size: 12px; font-weight: 700;
+    }
+    .trust-pill .live-dot {
+      position: relative; width: 8px; height: 8px; border-radius: 999px; background: #22c55e;
+    }
+    .trust-pill .live-dot::before {
+      content: ""; position: absolute; inset: -5px; border-radius: 999px;
+      background: rgba(34,197,94,.35); animation: livePulse 1.6s ease-out infinite;
+    }
+    @keyframes livePulse { 0% { transform: scale(.6); opacity: .9; } 100% { transform: scale(1.7); opacity: 0; } }
+
+    /* ── Decision flow row ───────────────── */
     .decision-flow {
       display: inline-flex; align-items: center; gap: 10px; color: #52647a;
       font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
@@ -86,6 +144,8 @@
     .decision-flow i { display: block; width: 24px; height: 1px; background: rgba(21,74,115,.24); }
     .decision-flow b { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
     .decision-flow b::before { content: ""; width: 7px; height: 7px; border-radius: 999px; background: var(--orange); }
+
+    /* ── Hero orbit + device stage ────────── */
     .hero-orbit {
       position: absolute; left: 50%; top: 50%; width: min(88%, 560px); aspect-ratio: 1;
       transform: translate(-50%,-50%); border: 1px solid rgba(21,74,115,.13); border-radius: 50%;
@@ -97,19 +157,10 @@
       transform-origin: 0 calc(50% + min(44vw,280px)); animation: orbitPulse 9s linear infinite;
     }
     @keyframes orbitPulse { to { transform: rotate(360deg); } }
-    .safe-text {
-      display: inline-block;
-      line-height: 1.16;
-      padding: .02em .11em .14em;
-      margin: -.02em -.11em -.14em;
-      vertical-align: bottom;
-    }
-    .flip-word {
-      position: relative; display: inline-block;
-      padding: .03em .14em .08em;
-      margin: -.03em -.14em -.08em;
-      vertical-align: -.04em; text-align: left;
-    }
+
+    /* ── Hero flip word ───────────────────── */
+    .safe-text { display: inline-block; line-height: 1.16; padding: .02em .11em .14em; margin: -.02em -.11em -.14em; vertical-align: bottom; }
+    .flip-word { position: relative; display: inline-block; padding: .03em .14em .08em; margin: -.03em -.14em -.08em; vertical-align: -.04em; text-align: left; }
     .flip-word.is-changing { animation: singleWordFlip .56s cubic-bezier(.4,0,.2,1); }
     @keyframes singleWordFlip {
       0% { opacity: 1; transform: translateY(0) rotateX(0); }
@@ -118,86 +169,56 @@
       100% { opacity: 1; transform: translateY(0) rotateX(0); }
     }
     @keyframes shine { to { background-position: 200% center; } }
+
+    /* ── Device mocks ─────────────────────── */
     .monitor-scene { perspective: 1500px; }
-    .hero-device-stage {
-      position: relative; min-height: 490px; display: flex; align-items: center; justify-content: center;
-      perspective: 1500px;
-    }
+    .hero-device-stage { position: relative; min-height: 490px; display: flex; align-items: center; justify-content: center; perspective: 1500px; }
     .hero-laptop { position: relative; z-index: 1; width: min(70%, 710px); margin-left: -7%; }
-    .laptop {
-      position: relative; transform: rotateX(2deg) rotateY(-7deg) rotateZ(.5deg);
-      transform-style: preserve-3d; transition: transform .45s cubic-bezier(.2,.8,.2,1);
-      filter: drop-shadow(0 38px 42px rgba(0,0,0,.30));
-    }
+    .laptop { position: relative; transform: rotateX(2deg) rotateY(-7deg) rotateZ(.5deg); transform-style: preserve-3d; transition: transform .45s cubic-bezier(.2,.8,.2,1); filter: drop-shadow(0 38px 42px rgba(0,0,0,.30)); }
     .laptop:hover { transform: rotateX(0) rotateY(-2deg) rotateZ(0) translateY(-4px); }
-    .laptop-lid {
-      position: relative; padding: 10px 10px 14px; overflow: hidden;
-      border: 1px solid rgba(255,255,255,.24); border-radius: 18px 18px 7px 7px;
-      background: linear-gradient(145deg,#26364a,#07101d 52%,#1f3147);
-      box-shadow: inset 0 0 0 1px rgba(0,0,0,.82);
-    }
-    .laptop-lid::before {
-      content: ""; position: absolute; z-index: 2; left: 50%; top: 4px; width: 5px; height: 5px;
-      transform: translateX(-50%); border-radius: 50%; background: #526174;
-    }
+    .laptop-lid { position: relative; padding: 10px 10px 14px; overflow: hidden; border: 1px solid rgba(255,255,255,.24); border-radius: 18px 18px 7px 7px; background: linear-gradient(145deg,#26364a,#07101d 52%,#1f3147); box-shadow: inset 0 0 0 1px rgba(0,0,0,.82); }
+    .laptop-lid::before { content: ""; position: absolute; z-index: 2; left: 50%; top: 4px; width: 5px; height: 5px; transform: translateX(-50%); border-radius: 50%; background: #526174; }
     .laptop-display { aspect-ratio: 16/9.5; overflow: hidden; border-radius: 9px; background: white; }
     .laptop-display img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-    .laptop-base {
-      position: relative; width: 108%; height: 25px; margin-left: -4%; margin-top: -1px;
-      border-radius: 3px 3px 14px 14px;
-      background: linear-gradient(180deg,#647386 0%,#344356 38%,#172536 100%);
-      clip-path: polygon(4% 0,96% 0,100% 72%,96% 100%,4% 100%,0 72%);
-      box-shadow: inset 0 1px rgba(255,255,255,.32);
-    }
-    .laptop-base::after {
-      content: ""; position: absolute; left: 50%; top: 0; width: 18%; height: 5px;
-      transform: translateX(-50%); border-radius: 0 0 7px 7px; background: rgba(7,16,29,.55);
-    }
-    .tablet-device {
-      position: absolute; z-index: 3; right: 5%; bottom: 30px; width: min(34%, 330px); aspect-ratio: 4/3;
-      overflow: hidden; border: 9px solid #0b1420; border-radius: 24px; background: #fff;
-      transform: rotateY(-7deg) rotateZ(3deg);
-      box-shadow: 0 34px 55px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.18);
-    }
-    .tablet-device::after {
-      content: ""; position: absolute; left: 50%; top: 3px; width: 6px; height: 6px;
-      transform: translateX(-50%); border-radius: 50%; background: #334155;
-    }
+    .laptop-base { position: relative; width: 108%; height: 25px; margin-left: -4%; margin-top: -1px; border-radius: 3px 3px 14px 14px; background: linear-gradient(180deg,#647386 0%,#344356 38%,#172536 100%); clip-path: polygon(4% 0,96% 0,100% 72%,96% 100%,4% 100%,0 72%); box-shadow: inset 0 1px rgba(255,255,255,.32); }
+    .laptop-base::after { content: ""; position: absolute; left: 50%; top: 0; width: 18%; height: 5px; transform: translateX(-50%); border-radius: 0 0 7px 7px; background: rgba(7,16,29,.55); }
+    .tablet-device { position: absolute; z-index: 3; right: 5%; bottom: 30px; width: min(34%, 330px); aspect-ratio: 4/3; overflow: hidden; border: 9px solid #0b1420; border-radius: 24px; background: #fff; transform: rotateY(-7deg) rotateZ(3deg); box-shadow: 0 34px 55px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.18); }
+    .tablet-device::after { content: ""; position: absolute; left: 50%; top: 3px; width: 6px; height: 6px; transform: translateX(-50%); border-radius: 50%; background: #334155; }
     .tablet-device img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-    .hero-phone {
-      position: absolute; z-index: 5; right: -1%; bottom: 8px; width: min(19%, 180px); aspect-ratio: 572/1185;
-      overflow: hidden; border: 6px solid #08111d; border-radius: 25px; background: #fff;
-      transform: rotateZ(7deg); box-shadow: 0 30px 50px rgba(0,0,0,.4);
-    }
-    .hero-phone::before {
-      content: ""; position: absolute; z-index: 2; left: 50%; top: 5px; width: 36%; height: 10px;
-      transform: translateX(-50%); border-radius: 99px; background: #08111d;
-    }
+    .hero-phone { position: absolute; z-index: 5; right: -1%; bottom: 8px; width: min(19%, 180px); aspect-ratio: 572/1185; overflow: hidden; border: 6px solid #08111d; border-radius: 25px; background: #fff; transform: rotateZ(7deg); box-shadow: 0 30px 50px rgba(0,0,0,.4); }
+    .hero-phone::before { content: ""; position: absolute; z-index: 2; left: 50%; top: 5px; width: 36%; height: 10px; transform: translateX(-50%); border-radius: 99px; background: #08111d; }
     .hero-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-    .float-note { animation: float 5s ease-in-out infinite; }
-    .float-note.two { animation-delay: -2.2s; }
-    @keyframes float { 50% { transform: translateY(-10px) rotate(1deg); } }
-    .seamless-line { background: linear-gradient(90deg, transparent, rgba(21,74,115,.25), transparent); height: 1px; }
+
+    /* ── Floating stat cards over hero ────── */
+    .float-badge {
+      position: absolute; z-index: 6;
+      background: rgba(255,255,255,.94); backdrop-filter: blur(14px);
+      border: 1px solid rgba(21,74,115,.10);
+      box-shadow: 0 20px 44px rgba(7,27,51,.16);
+      border-radius: 14px; padding: 10px 14px; font-weight: 700;
+      animation: floatY 6s ease-in-out infinite;
+    }
+    .float-badge.two { animation-delay: -2.4s; }
+    @keyframes floatY { 50% { transform: translateY(-8px); } }
+
+    /* ── Feature phones (mobile-first row) ── */
     .phone {
       position: relative; overflow: hidden; border: 7px solid #07121f; border-radius: 32px; background: #07121f;
       box-shadow: 0 28px 70px rgba(7,27,51,.25), inset 0 0 0 1px rgba(255,255,255,.18);
     }
-    .phone::before {
-      content: ""; position: absolute; z-index: 3; left: 50%; top: 7px; width: 32%; height: 16px;
-      transform: translateX(-50%); border-radius: 999px; background: #07121f;
-    }
+    .phone::before { content: ""; position: absolute; z-index: 3; left: 50%; top: 7px; width: 32%; height: 16px; transform: translateX(-50%); border-radius: 999px; background: #07121f; }
     .phone img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 24px; }
     .phone-left { transform: rotate(-6deg) translateY(34px); }
     .phone-right { transform: rotate(5deg); }
+
+    /* ── Screen preview cards ─────────────── */
     .open-preview {
       overflow: hidden; background: white; padding: 6px;
       border: 1px solid rgba(21,74,115,.11);
       box-shadow: 0 24px 64px rgba(7,27,51,.13);
+      border-radius: 18px;
     }
-    .open-preview img {
-      display: block; width: 100%; aspect-ratio: 16/10;
-      object-fit: cover; object-position: top; border-radius: 10px;
-    }
+    .open-preview img { display: block; width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; border-radius: 12px; }
     .screen-reveal {
       position: relative;
       clip-path: inset(0 100% 0 0 round 1rem);
@@ -224,29 +245,130 @@
     }
     .reveal.visible .screen-reveal::after { animation: screen-scan .9s .28s ease-out both; }
     @keyframes screen-scan { to { transform: translateX(120%); } }
+
+    /* ── Icons and check bubbles ──────────── */
     .check-icon { box-shadow: inset 0 0 0 1px rgba(241,91,42,.28); }
+
+    /* ── Buttons ──────────────────────────── */
     .cta-sheen { position: relative; isolation: isolate; overflow: hidden; }
     .cta-sheen::after {
       content: ""; position: absolute; z-index: -1; inset: 0; transform: translateX(-120%);
-      background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,.28) 48%, transparent 76%);
-      transition: transform .65s ease;
+      background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,.36) 48%, transparent 76%);
+      transition: transform .75s ease;
     }
     .cta-sheen:hover::after { transform: translateX(120%); }
-    .limited-offer {
-      box-shadow: 0 0 0 1px rgba(241,91,42,.20), 0 10px 34px rgba(241,91,42,.18);
-      animation: offerGlow 2.4s ease-in-out infinite;
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 56px; padding: 14px 26px; border-radius: 14px;
+      background: linear-gradient(180deg, #f7743f, #ec4e18);
+      color: #fff; font-weight: 800; letter-spacing: -.005em;
+      box-shadow: 0 14px 38px rgba(241,91,42,.34), inset 0 1px 0 rgba(255,255,255,.28);
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
     }
-    @keyframes offerGlow {
-      50% { box-shadow: 0 0 0 4px rgba(241,91,42,.10), 0 14px 42px rgba(241,91,42,.28); }
+    .btn-primary:hover { transform: translateY(-1px); filter: brightness(1.05); box-shadow: 0 18px 44px rgba(241,91,42,.42), inset 0 1px 0 rgba(255,255,255,.32); }
+    .btn-primary:focus { outline: none; box-shadow: 0 0 0 4px rgba(241,91,42,.28), 0 18px 44px rgba(241,91,42,.42); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 56px; padding: 14px 22px; border-radius: 14px;
+      background: rgba(255,255,255,.7); backdrop-filter: blur(10px);
+      color: var(--navy); font-weight: 800;
+      border: 1px solid rgba(21,74,115,.14);
+      transition: background .2s ease, transform .2s ease, border-color .2s ease;
     }
+    .btn-ghost:hover { background: #fff; transform: translateY(-1px); border-color: rgba(21,74,115,.24); }
+
+    /* ── Sticky top navbar ────────────────── */
+    .topnav {
+      position: fixed; top: 0; inset-inline: 0; z-index: 60;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 20px; gap: 12px;
+      background: rgba(255,255,255,.72); backdrop-filter: saturate(160%) blur(14px);
+      border-bottom: 1px solid rgba(21,74,115,.10);
+      transform: translateY(-110%); transition: transform .35s cubic-bezier(.2,.8,.2,1);
+    }
+    .topnav.is-visible { transform: translateY(0); }
+    .topnav__brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; color: var(--navy); }
+    .topnav__brand img { height: 46px; width: auto; display: block; }
+    .topnav__cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 16px; border-radius: 999px;
+      background: linear-gradient(180deg, #f7743f, #ec4e18);
+      color: #fff; font-weight: 800; font-size: 13px;
+      box-shadow: 0 8px 22px rgba(241,91,42,.34), inset 0 1px 0 rgba(255,255,255,.28);
+    }
+
+    /* ── Launchpad closing section ────────── */
+    .launchpad {
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(circle at 22% 20%, rgba(241,91,42,.20), transparent 40%),
+        radial-gradient(circle at 82% 78%, rgba(212,162,76,.16), transparent 45%),
+        linear-gradient(160deg, #06172c 0%, #071b33 55%, #0a2647 100%);
+      color: #fff;
+    }
+    .launchpad .halo {
+      position: absolute; left: 50%; top: -30%; width: 900px; height: 900px;
+      transform: translateX(-50%); border-radius: 50%;
+      background: radial-gradient(circle, rgba(241,91,42,.30), transparent 60%);
+      filter: blur(30px);
+    }
+    .glass-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 26px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 40px 100px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.18);
+    }
+    .glass-card::before {
+      content: ""; position: absolute; inset: -1px; border-radius: 27px; pointer-events: none;
+      background: linear-gradient(135deg, rgba(212,162,76,.55), rgba(241,91,42,.35), transparent 55%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      padding: 1px;
+    }
+    .launch-tile {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 14px; border-radius: 14px;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .launch-tile:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18); transform: translateY(-2px); }
+    .launch-tile .num { font-family: Manrope, sans-serif; font-weight: 900; font-size: 20px; color: var(--gold); min-width: 32px; }
+    .launch-tile .label { font-weight: 700; color: #eaf2ff; }
+    .launch-tile .desc { color: rgba(220,232,247,.62); font-size: 12px; margin-top: 2px; }
+
+    /* ── Reveal utility ───────────────────── */
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── Mobile sticky bottom bar ─────────── */
+    .mobile-cta {
+      position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 55;
+      display: none; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 10px 12px 10px 16px;
+      background: rgba(7,27,51,.94); backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
+      box-shadow: 0 20px 44px rgba(7,27,51,.42);
+      transform: translateY(140%); transition: transform .35s cubic-bezier(.2,.8,.2,1);
+    }
+    .mobile-cta.is-visible { transform: translateY(0); }
+    .mobile-cta__label { color: #fff; font-weight: 800; font-size: 13px; letter-spacing: -.005em; line-height: 1.15; }
+    .mobile-cta__sub { color: rgba(255,255,255,.6); font-size: 11px; font-weight: 600; margin-top: 2px; }
+    .mobile-cta__btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px;
+      background: linear-gradient(180deg, #f7743f, #ec4e18); color: #fff; font-weight: 800; font-size: 13px;
+      box-shadow: 0 8px 20px rgba(241,91,42,.4), inset 0 1px 0 rgba(255,255,255,.28); white-space: nowrap;
+    }
+
+    /* ── Mobile-specific tweaks ───────────── */
     @media (max-width: 767px) {
-      .hero-last-line { font-size: .53em; }
+      .hero-last-line { font-size: .55em; }
       .hero-layout { min-height: auto; }
       .decision-flow { gap: 7px; font-size: 9px; letter-spacing: .05em; }
       .decision-flow i { width: 12px; }
-      .hero-device-stage { min-height: 285px; }
+      .hero-device-stage { min-height: 300px; }
       .hero-laptop { width: 74%; margin-left: -16%; }
       .laptop-lid { padding: 6px 6px 9px; border-radius: 10px 10px 4px 4px; }
       .laptop-base { height: 14px; }
@@ -256,7 +378,45 @@
       .phone img { border-radius: 18px; }
       .phone-left { transform: rotate(-4deg) translateY(18px); }
       .phone-right { transform: rotate(4deg); }
+      .mobile-cta { display: flex; }
+      /* leave breathing room so the sticky bar never covers content */
+      main { padding-bottom: 100px; }
+
+      /* Mobile-only: scroll-linked pop-zoom on preview screenshots */
+      .open-preview {
+        transform: scale(.92);
+        transform-origin: center center;
+        transition: transform .55s cubic-bezier(.22,.8,.24,1), box-shadow .55s ease;
+        will-change: transform;
+      }
+      .open-preview.is-zooming {
+        transform: scale(1.06);
+        box-shadow: 0 34px 90px rgba(7,27,51,.22);
+      }
+      @supports (animation-timeline: view()) {
+        .open-preview {
+          transition: none;
+          animation: mobileZoomPop linear both;
+          animation-timeline: view();
+          animation-range: cover 0% cover 100%;
+        }
+        .open-preview.is-zooming { transform: none; }
+        @keyframes mobileZoomPop {
+          0%   { transform: scale(.92); }
+          50%  { transform: scale(1.06); }
+          100% { transform: scale(.92); }
+        }
+      }
+      /* Turn off desktop skew/clip on mobile so the pop-zoom drives transform cleanly */
+      .screen-reveal,
+      .screen-reveal.screen-right { clip-path: none !important; }
+      .screen-reveal::after { display: none; }
+      .float-badge { display: none; }
+      .topnav { padding: 8px 14px; }
+      .topnav__brand img { height: 38px; }
+      .topnav__cta { padding: 8px 12px; font-size: 12px; }
     }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
@@ -271,31 +431,58 @@
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1936732150355851&amp;ev=PageView&amp;noscript=1" alt=""></noscript>
   <a href="#main" class="fixed left-4 top-4 z-[100] -translate-y-24 rounded-md bg-white px-4 py-3 font-bold text-navy shadow-xl transition focus:translate-y-0">Skip to content</a>
 
+  <!-- Sticky top navbar (appears on scroll) -->
+  <nav id="topnav" class="topnav" aria-label="Primary">
+    <a href="https://www.tabindia.org/" class="topnav__brand" aria-label="TAB India">
+      <img src="assets/tab-india-logo-horizontal.png" alt="TAB India">
+    </a>
+    <a href="https://www.tabindia.org/" class="topnav__cta cta-sheen" rel="noopener">
+      Explore TAB India
+      <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </nav>
+
   <main id="main">
+    <!-- ── HERO ─────────────────────────────────────── -->
     <section class="hero-mesh noise relative overflow-hidden text-navy">
       <div class="dot-field absolute inset-0"></div>
+      <div class="grid-lines absolute inset-0 opacity-70"></div>
       <div class="absolute -right-24 top-0 h-[520px] w-[760px] rounded-full bg-orangebrand/[.05] blur-3xl"></div>
 
-      <div class="hero-layout relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-5 pb-16 pt-6 sm:px-8 sm:pb-20 sm:pt-8 lg:grid-cols-[.88fr_1.12fr] lg:gap-4 lg:px-10 lg:py-10">
+      <div class="hero-layout relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-5 pb-16 pt-6 sm:px-8 sm:pb-20 sm:pt-10 lg:grid-cols-[.88fr_1.12fr] lg:gap-4 lg:px-10 lg:py-12">
         <div class="hero-copy text-center lg:text-left">
-          <div class="flex justify-center lg:justify-start">
+          <div class="flex items-center justify-center gap-3 lg:justify-start">
             <img src="assets/tab-india-logo-horizontal.png" width="1536" height="1536" alt="TAB India" class="h-16 w-52 object-cover sm:h-20 sm:w-64" style="filter:drop-shadow(0 4px 12px rgba(0,0,0,.15))">
           </div>
+          <div class="mt-5 flex justify-center lg:justify-start">
+            <span class="trust-pill">
+              <span class="live-dot" aria-hidden="true"></span>
+              NEET 2026 counselling · Live
+            </span>
+          </div>
           <p class="eyebrow mt-6 text-[10px] font-extrabold uppercase text-orangebrand sm:text-xs">NEET UG decision intelligence</p>
-          <h1 class="hero-title mt-4 text-[2.8rem] font-extrabold leading-[1.02] tracking-[-.055em] sm:text-[4rem] lg:text-[4.45rem]" aria-label="Know your MBBS and BDS college chances in a minute.">
+          <h1 class="hero-title mt-3 text-[2.7rem] font-extrabold leading-[1.02] tracking-[-.055em] sm:text-[4rem] lg:text-[4.45rem]" aria-label="Know your MBBS and BDS college chances in a minute.">
             <span class="block">Know your</span>
             <span class="block">
               <span id="degree-word" class="flip-word gradient-text" aria-hidden="true">MBBS</span>
             </span>
-            <span class="hero-last-line"><span class="safe-text gradient-text">college chances</span> in a minute.</span>
+            <span class="hero-last-line">
+              <span class="safe-text gradient-text">college chances</span>
+              <span class="serif-accent text-slate-600"> in a minute.</span>
+            </span>
           </h1>
           <p class="mx-auto mt-6 max-w-xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8 lg:mx-0">
-            Get data-backed college predictions matched to your rank, quota and budget.
+            Rank-aware predictions, verified cutoffs and every counselling tool — all inside the
+            <span class="font-semibold text-navy">TAB India</span> platform.
           </p>
-          <div class="mt-8 flex justify-center lg:justify-start">
-            <a href="#pricing" class="cta-sheen flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-orangebrand px-8 py-4 text-base font-extrabold text-white shadow-[0_14px_38px_rgba(241,91,42,.28)] transition hover:bg-orange-500 focus:outline-none focus:ring-4 focus:ring-orange-300/40 sm:w-auto">
-              Check My College Chances
+          <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:gap-4 lg:justify-start">
+            <a href="https://www.tabindia.org/" class="cta-sheen btn-primary w-full sm:w-auto" rel="noopener">
+              Explore TAB India
               <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#tour" class="btn-ghost w-full sm:w-auto">
+              See what's inside
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
           <div class="mt-7 flex justify-center lg:justify-start" aria-label="Prediction process: rank mapped, quota checked, matches ready">
@@ -322,11 +509,26 @@
             <div class="hero-phone">
               <img src="assets/college-chances-mobile.jpeg" width="572" height="1210" alt="TAB India College Chances on phone">
             </div>
+
+            <!-- Floating stat badges over the hero device stage (desktop only) -->
+            <div class="float-badge left-[-2%] top-[8%] hidden lg:flex items-center gap-2 text-[12px] text-navy">
+              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-orange-50 text-orangebrand">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>1,100+ verified colleges</span>
+            </div>
+            <div class="float-badge two right-[-1%] top-[62%] hidden lg:flex items-center gap-2 text-[12px] text-navy">
+              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-50 text-bluebrand">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M3 12h4l3-8 4 16 3-8h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>Rank-aware predictions</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ── PILLAR STATS ─────────────────────────────── -->
     <section class="relative overflow-hidden bg-white py-20 sm:py-28">
       <div class="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-[#eef5fa] to-transparent"></div>
       <div class="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
@@ -350,17 +552,18 @@
       </div>
     </section>
 
-    <section class="overflow-hidden bg-[#f7f9fc]">
+    <!-- ── FEATURE TOUR ─────────────────────────────── -->
+    <section id="tour" class="overflow-hidden bg-[#f7f9fc]">
       <div class="mx-auto max-w-4xl px-5 pb-16 pt-20 text-center sm:px-8 sm:pb-20 sm:pt-28">
         <p class="eyebrow text-xs font-extrabold uppercase text-orangebrand">One profile. Every possibility.</p>
-        <h2 class="mt-4 text-4xl font-black leading-tight tracking-[-.04em] sm:text-5xl">See every tool in action.</h2>
+        <h2 class="mt-4 text-4xl font-black leading-tight tracking-[-.04em] sm:text-5xl">See every tool <span class="serif-accent gradient-text">in action.</span></h2>
         <p class="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-600">Explore each TAB India decision-support experience in its own dedicated view, starting with your counselling eligibility.</p>
       </div>
 
       <section class="border-t border-bluebrand/10 bg-white py-16 sm:py-24">
         <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.28fr_.72fr] lg:gap-16 lg:px-10">
           <figure class="reveal order-2 lg:order-1">
-            <div class="open-preview screen-reveal rounded-2xl"><img src="assets/eligibility-check-desktop.jpeg" width="2560" height="1600" alt="TAB India Eligibility Check dashboard" loading="lazy"></div>
+            <div class="open-preview screen-reveal"><img src="assets/eligibility-check-desktop.jpeg" width="2560" height="1600" alt="TAB India Eligibility Check dashboard" loading="lazy"></div>
           </figure>
           <div class="reveal order-1 lg:order-2">
             <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">01 · Eligibility Check</p>
@@ -378,7 +581,7 @@
             <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">See personalized ambitious, realistic and safer college possibilities based on your rank, category, quota eligibility and budget.</p>
           </div>
           <figure class="reveal">
-            <div class="open-preview screen-reveal screen-right rounded-2xl"><img src="assets/college-chances-desktop.jpeg" width="2560" height="1600" alt="TAB India College Chances dashboard" loading="lazy"></div>
+            <div class="open-preview screen-reveal screen-right"><img src="assets/college-chances-desktop.jpeg" width="2560" height="1600" alt="TAB India College Chances dashboard" loading="lazy"></div>
           </figure>
         </div>
       </section>
@@ -386,7 +589,7 @@
       <section class="border-t border-bluebrand/10 bg-white py-16 sm:py-24">
         <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.28fr_.72fr] lg:gap-16 lg:px-10">
           <figure class="reveal order-2 lg:order-1">
-            <div class="open-preview screen-reveal rounded-2xl"><img src="assets/closing-cutoff-desktop.jpeg" width="2560" height="1600" alt="TAB India Closing Cutoff Tracker" loading="lazy"></div>
+            <div class="open-preview screen-reveal"><img src="assets/closing-cutoff-desktop.jpeg" width="2560" height="1600" alt="TAB India Closing Cutoff Tracker" loading="lazy"></div>
           </figure>
           <div class="reveal order-1 lg:order-2">
             <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">03 · Cutoff Tracker</p>
@@ -404,7 +607,7 @@
             <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">Explore verified fees, seat matrices, bonds, infrastructure details and other essential information across 1,100+ colleges.</p>
           </div>
           <figure class="reveal">
-            <div class="open-preview screen-reveal screen-right rounded-2xl"><img src="assets/colleges-desktop.jpeg" width="2560" height="1600" alt="TAB India Medical College Directory" loading="lazy"></div>
+            <div class="open-preview screen-reveal screen-right"><img src="assets/colleges-desktop.jpeg" width="2560" height="1600" alt="TAB India Medical College Directory" loading="lazy"></div>
           </figure>
         </div>
       </section>
@@ -412,7 +615,7 @@
       <section class="border-y border-bluebrand/10 bg-white py-16 sm:py-24">
         <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.28fr_.72fr] lg:gap-16 lg:px-10">
           <figure class="reveal order-2 lg:order-1">
-            <div class="open-preview screen-reveal rounded-2xl"><img src="assets/content-desktop.jpeg" width="2560" height="1600" alt="TAB India Counselling Content library" loading="lazy"></div>
+            <div class="open-preview screen-reveal"><img src="assets/content-desktop.jpeg" width="2560" height="1600" alt="TAB India Counselling Content library" loading="lazy"></div>
           </figure>
           <div class="reveal order-1 lg:order-2">
             <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">05 · Content</p>
@@ -423,6 +626,7 @@
       </section>
     </section>
 
+    <!-- ── MOBILE MOMENTS ───────────────────────────── -->
     <section class="relative overflow-hidden bg-white py-20 sm:py-32">
       <div class="absolute -right-36 top-20 h-96 w-96 rounded-full bg-orange-100/60 blur-3xl"></div>
       <div class="absolute -left-52 bottom-0 h-[32rem] w-[32rem] rounded-full bg-blue-100/70 blur-3xl"></div>
@@ -437,7 +641,7 @@
         </div>
         <div class="reveal order-1 lg:order-2">
           <p class="eyebrow text-xs font-extrabold uppercase text-orangebrand">Counselling confidence in your pocket</p>
-          <h2 class="mt-4 text-4xl font-black leading-tight tracking-[-.04em] sm:text-5xl">Made for the mobile moments that matter.</h2>
+          <h2 class="mt-4 text-4xl font-black leading-tight tracking-[-.04em] sm:text-5xl">Made for the <span class="serif-accent gradient-text">mobile moments</span> that matter.</h2>
           <p class="mt-6 max-w-xl text-base leading-7 text-slate-600">Most counselling decisions happen between classes, commutes and family conversations. TAB India keeps your content library and college predictions readable, fast and ready on any screen.</p>
           <div class="mt-8 space-y-5">
             <div class="flex gap-4">
@@ -457,58 +661,103 @@
       </div>
     </section>
 
-    <section id="pricing" class="relative overflow-hidden bg-navy px-5 py-20 text-white sm:px-8 sm:py-28">
-      <div class="dot-field absolute inset-0 opacity-50"></div>
-      <div class="absolute left-1/2 top-0 h-80 w-[50rem] -translate-x-1/2 rounded-full bg-orange-400/[.10] blur-3xl"></div>
+    <!-- ── LAUNCHPAD (replaces pricing) ─────────────── -->
+    <section id="launchpad" class="launchpad px-5 py-20 sm:px-8 sm:py-28">
+      <div class="halo" aria-hidden="true"></div>
+      <div class="dot-field absolute inset-0 opacity-30"></div>
       <div class="relative mx-auto max-w-6xl">
         <div class="mx-auto max-w-3xl text-center">
-          <p class="eyebrow text-xs font-extrabold uppercase text-orange-300">Simple, transparent pricing</p>
-          <h2 class="hero-title mx-auto mt-4 max-w-2xl text-3xl font-extrabold leading-tight tracking-[-.035em] sm:text-4xl">
-            One payment. <span class="text-orange-300">Every TAB India tool unlocked.</span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[11px] font-black uppercase tracking-[.2em] text-white/80 backdrop-blur">
+            <span class="h-1.5 w-1.5 rounded-full bg-orange-300 shadow-[0_0_0_4px_rgba(241,91,42,.18)]"></span>
+            Continue on the platform
+          </span>
+          <h2 class="hero-title mx-auto mt-6 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-[-.04em] sm:text-6xl">
+            The full platform lives on
+            <span class="block gold-text">tabindia.org</span>
           </h2>
-          <p class="mt-5 text-blue-100/70">No recurring subscription. No hidden upgrade charge.</p>
+          <p class="mx-auto mt-6 max-w-xl text-base leading-7 text-blue-100/75 sm:text-lg">
+            Log in, build your profile, and unlock predictions, cutoffs, the college directory and counselling content — all under one roof.
+          </p>
         </div>
-        <div class="relative mt-14 border-y-[3px] border-mint py-10 sm:px-8 sm:py-12">
-          <span class="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-mint px-5 py-2 text-[11px] font-black tracking-[.16em]">MOST POPULAR</span>
-          <div class="grid items-center gap-10 lg:grid-cols-[.8fr_1.2fr]">
-            <div class="text-center lg:text-left">
-              <p class="text-sm font-bold text-orange-300">Complete NEET UG Decision Support</p>
-              <div class="limited-offer mt-5 inline-flex items-center gap-2 rounded-full border border-orange-300/35 bg-orangebrand px-4 py-2 text-xs font-black uppercase tracking-[.13em] text-white">
-                <span class="h-2 w-2 rounded-full bg-white"></span>
-                Limited-time 50% off
+
+        <div class="glass-card mt-14 p-6 sm:p-10">
+          <div class="grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-14">
+            <div>
+              <p class="text-xs font-extrabold uppercase tracking-[.18em] text-orange-200">What's waiting for you</p>
+              <div class="mt-5 grid gap-3">
+                <a href="https://www.tabindia.org/" class="launch-tile" rel="noopener">
+                  <span class="num">01</span>
+                  <span class="min-w-0"><span class="label block">Eligibility Check</span><span class="desc block">Every counselling route mapped in seconds.</span></span>
+                </a>
+                <a href="https://www.tabindia.org/" class="launch-tile" rel="noopener">
+                  <span class="num">02</span>
+                  <span class="min-w-0"><span class="label block">College Chances</span><span class="desc block">Ambitious, realistic and safe matches for your rank.</span></span>
+                </a>
+                <a href="https://www.tabindia.org/" class="launch-tile" rel="noopener">
+                  <span class="num">03</span>
+                  <span class="min-w-0"><span class="label block">Cutoff Tracker</span><span class="desc block">Verified closing cutoffs, cleanly compared.</span></span>
+                </a>
+                <a href="https://www.tabindia.org/" class="launch-tile" rel="noopener">
+                  <span class="num">04</span>
+                  <span class="min-w-0"><span class="label block">College Directory</span><span class="desc block">1,100+ MBBS &amp; BDS profiles, verified.</span></span>
+                </a>
+                <a href="https://www.tabindia.org/" class="launch-tile" rel="noopener">
+                  <span class="num">05</span>
+                  <span class="min-w-0"><span class="label block">Counselling Content</span><span class="desc block">Focused explainers when a decision needs clarity.</span></span>
+                </a>
               </div>
-              <div class="mt-4 flex flex-wrap items-end justify-center gap-x-3 gap-y-2 lg:justify-start">
-                <del class="pb-2 text-xl font-bold text-blue-200/55 decoration-2">₹1,999</del>
-                <span class="text-6xl font-black tracking-[-.05em]">₹999</span>
-                <span class="mb-2 rounded-full bg-orangebrand px-3 py-1.5 text-xs font-black tracking-wider text-white">50% OFF</span>
-              </div>
-              <p class="mt-2 text-sm font-semibold text-blue-200">One-time payment</p>
-              <p class="mt-3 text-sm text-blue-100/75">Instant access to the complete platform. Offer available for a limited time only.</p>
             </div>
-            <ul class="grid gap-x-8 gap-y-4 text-sm text-blue-50 sm:grid-cols-2">
-              <li class="flex gap-3"><span class="text-mint">✓</span> Unlimited college predictions</li>
-              <li class="flex gap-3"><span class="text-mint">✓</span> 1,100+ verified profiles</li>
-              <li class="flex gap-3"><span class="text-mint">✓</span> Real-time cutoff analysis</li>
-              <li class="flex gap-3"><span class="text-mint">✓</span> Smart quota eligibility mapping</li>
-              <li class="flex gap-3"><span class="text-mint">✓</span> Budget-based recommendations</li>
-              <li class="flex gap-3"><span class="text-mint">✓</span> Fees, seats and bond details</li>
-              <li class="flex gap-3"><span class="text-mint">✓</span> All-category seat matrices</li>
-              <li class="flex gap-3"><span class="text-mint">✓</span> Priority customer support</li>
-            </ul>
+
+            <div class="flex flex-col justify-between gap-8">
+              <div>
+                <p class="text-xs font-extrabold uppercase tracking-[.18em] text-orange-200">One destination</p>
+                <p class="mt-4 text-2xl font-black leading-tight tracking-[-.02em] text-white sm:text-3xl">
+                  Open TAB India and pick up right where the counselling season is happening.
+                </p>
+                <ul class="mt-6 space-y-3 text-sm text-blue-100/85">
+                  <li class="flex items-start gap-3"><span class="mt-1 text-orange-300">✓</span> No wait — jump straight into the platform.</li>
+                  <li class="flex items-start gap-3"><span class="mt-1 text-orange-300">✓</span> Every tool sync'd to a single profile.</li>
+                  <li class="flex items-start gap-3"><span class="mt-1 text-orange-300">✓</span> Optimised for both desktop and mobile.</li>
+                </ul>
+              </div>
+
+              <div class="flex flex-col gap-3">
+                <a href="https://www.tabindia.org/" class="cta-sheen btn-primary w-full text-lg" rel="noopener">
+                  Go to tabindia.org
+                  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <p class="text-center text-[11px] font-semibold uppercase tracking-[.14em] text-blue-100/55">
+                  Opens the full TAB India experience
+                </p>
+              </div>
+            </div>
           </div>
-          <a href="https://www.tabindia.org/subscribe" class="cta-sheen mt-10 flex min-h-16 w-full items-center justify-center rounded-xl bg-orangebrand px-7 py-4 text-lg font-black text-white shadow-[0_16px_42px_rgba(241,91,42,.30)] transition hover:bg-orange-500 focus:outline-none focus:ring-4 focus:ring-orange-300/40">
-            Claim 50% Off &amp; Start Predicting
-          </a>
-          <p class="mt-4 text-center text-[11px] font-semibold text-blue-100/55">Secure checkout · One-time payment · Instant access</p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="bg-[#06172c] px-5 py-8 text-center text-xs leading-6 text-blue-100/50">
-    © 2026 TAB India. All rights reserved. · Secure payment protected by industry-leading encryption. ·
-    <a href="https://tabindia.org" class="font-semibold text-blue-100/70 underline decoration-blue-200/25 underline-offset-4 transition hover:text-white">Visit tabindia.org</a>
+  <footer class="bg-[#06172c] px-5 py-10 text-center text-xs leading-6 text-blue-100/60">
+    <div class="mx-auto flex max-w-5xl flex-col items-center gap-4 sm:flex-row sm:justify-between">
+      <div class="flex items-center gap-3">
+        <img src="assets/tab-india-logo-horizontal.png" alt="TAB India" class="h-8 w-auto opacity-90">
+      </div>
+      <p>© 2026 TAB India · NEET UG decision intelligence</p>
+      <a href="https://www.tabindia.org/" class="font-semibold text-blue-100/85 underline decoration-blue-200/25 underline-offset-4 transition hover:text-white" rel="noopener">Visit tabindia.org →</a>
+    </div>
   </footer>
+
+  <!-- ── MOBILE STICKY CTA ────────────────────────── -->
+  <div id="mobileCta" class="mobile-cta" aria-hidden="true">
+    <div class="min-w-0">
+      <div class="mobile-cta__label">Ready to see your chances?</div>
+      <div class="mobile-cta__sub">Continue on tabindia.org</div>
+    </div>
+    <a href="https://www.tabindia.org/" class="mobile-cta__btn cta-sheen" rel="noopener">
+      Open
+      <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
 
   <script>
     const revealObserver = new IntersectionObserver((entries) => {
@@ -533,6 +782,54 @@
         }, 250);
         window.setTimeout(() => degreeWord.classList.remove("is-changing"), 570);
       }, 2200);
+    }
+
+    // Mobile-only pop-zoom on preview screenshots (fallback for browsers
+    // without animation-timeline: view() — Safari, older Chrome, Firefox).
+    const supportsViewTimeline = CSS.supports && CSS.supports("animation-timeline: view()");
+    const isMobile = window.matchMedia("(max-width: 767px)");
+    if (!supportsViewTimeline && !reduceMotion) {
+      const previews = document.querySelectorAll(".open-preview");
+      let ticking = false;
+      const updateZoom = () => {
+        ticking = false;
+        if (!isMobile.matches) {
+          previews.forEach((p) => p.classList.remove("is-zooming"));
+          return;
+        }
+        const vh = window.innerHeight;
+        const centerBand = vh * 0.35; // element counts as "centered" when within this vertical band of viewport center
+        previews.forEach((p) => {
+          const rect = p.getBoundingClientRect();
+          const elCenter = rect.top + rect.height / 2;
+          const distance = Math.abs(elCenter - vh / 2);
+          p.classList.toggle("is-zooming", distance < centerBand);
+        });
+      };
+      const onScroll = () => {
+        if (!ticking) { window.requestAnimationFrame(updateZoom); ticking = true; }
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll);
+      updateZoom();
+    }
+
+    // Sticky top nav + mobile CTA — appear after hero scrolls out
+    const topnav = document.getElementById("topnav");
+    const mobileCta = document.getElementById("mobileCta");
+    const heroSection = document.querySelector(".hero-mesh");
+    if (heroSection && topnav) {
+      const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const show = !entry.isIntersecting;
+          topnav.classList.toggle("is-visible", show);
+          if (mobileCta) {
+            mobileCta.classList.toggle("is-visible", show);
+            mobileCta.setAttribute("aria-hidden", show ? "false" : "true");
+          }
+        });
+      }, { threshold: 0, rootMargin: "-80px 0px 0px 0px" });
+      scrollObserver.observe(heroSection);
     }
   </script>
 </body>
