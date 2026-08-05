@@ -178,7 +178,7 @@
     .laptop:hover { transform: rotateX(0) rotateY(-2deg) rotateZ(0) translateY(-4px); }
     .laptop-lid { position: relative; padding: 10px 10px 14px; overflow: hidden; border: 1px solid rgba(255,255,255,.24); border-radius: 18px 18px 7px 7px; background: linear-gradient(145deg,#26364a,#07101d 52%,#1f3147); box-shadow: inset 0 0 0 1px rgba(0,0,0,.82); }
     .laptop-lid::before { content: ""; position: absolute; z-index: 2; left: 50%; top: 4px; width: 5px; height: 5px; transform: translateX(-50%); border-radius: 50%; background: #526174; }
-    .laptop-display { aspect-ratio: 16/9.5; overflow: hidden; border-radius: 9px; background: white; }
+    .laptop-display { aspect-ratio: 1279/663; overflow: hidden; border-radius: 9px; background: white; }
     .laptop-display img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
     .laptop-base { position: relative; width: 108%; height: 25px; margin-left: -4%; margin-top: -1px; border-radius: 3px 3px 14px 14px; background: linear-gradient(180deg,#647386 0%,#344356 38%,#172536 100%); clip-path: polygon(4% 0,96% 0,100% 72%,96% 100%,4% 100%,0 72%); box-shadow: inset 0 1px rgba(255,255,255,.32); }
     .laptop-base::after { content: ""; position: absolute; left: 50%; top: 0; width: 18%; height: 5px; transform: translateX(-50%); border-radius: 0 0 7px 7px; background: rgba(7,16,29,.55); }
@@ -219,6 +219,7 @@
       border-radius: 18px;
     }
     .open-preview img { display: block; width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; border-radius: 12px; }
+    .open-preview--wide img { aspect-ratio: 1279/663; }
     .screen-reveal {
       position: relative;
       clip-path: inset(0 100% 0 0 round 1rem);
@@ -627,7 +628,7 @@
               <div class="laptop">
                 <div class="laptop-lid">
                   <div class="laptop-display">
-                    <img src="assets/college-chances-desktop.png" width="2560" height="1600" alt="TAB India College Chances dashboard on laptop">
+                    <img src="assets/college-chances-desktop.png" width="1279" height="663" alt="TAB India College Chances dashboard on laptop">
                   </div>
                 </div>
                 <div class="laptop-base"></div>
@@ -777,7 +778,7 @@
             <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">See personalized ambitious, realistic and safer college possibilities based on your rank, category, quota eligibility and budget.</p>
           </div>
           <figure class="reveal">
-            <div class="open-preview screen-reveal screen-right"><img src="assets/college-chances-desktop.png" width="2560" height="1600" alt="TAB India College Chances dashboard" loading="lazy"></div>
+            <div class="open-preview open-preview--wide screen-reveal screen-right"><img src="assets/college-chances-desktop.png" width="1279" height="663" alt="TAB India College Chances dashboard" loading="lazy"></div>
           </figure>
         </div>
       </section>
