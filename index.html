@@ -460,6 +460,24 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,.32);
     }
 
+    /* ── Pillar bullet (replaces ordinal 01/03) ── */
+    .pillar-bullet {
+      position: relative; display: inline-block;
+      width: 14px; height: 14px; border-radius: 999px;
+      background: var(--orange);
+      box-shadow: 0 0 0 6px rgba(241,91,42,.14), inset 0 1px 0 rgba(255,255,255,.35);
+    }
+    .pillar-bullet::before {
+      content: ""; position: absolute; inset: -14px; border-radius: 999px;
+      border: 1px dashed rgba(241,91,42,.30);
+    }
+    .pillar-bullet--mint {
+      background: var(--orange);
+      box-shadow: 0 0 0 6px rgba(241,91,42,.14), inset 0 1px 0 rgba(255,255,255,.35);
+    }
+    .pillar-bullet--mint::before { border-color: rgba(241,91,42,.30); }
+    .pillar-bullet--orange { background: var(--orange); }
+
     /* ── Reveal utility ───────────────────── */
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.visible { opacity: 1; transform: none; }
@@ -644,21 +662,26 @@
     <section class="relative overflow-hidden bg-white py-20 sm:py-28">
       <div class="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-[#eef5fa] to-transparent"></div>
       <div class="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-        <div class="grid border-y border-bluebrand/10 md:grid-cols-3">
-          <div class="reveal py-9 md:pr-10">
-            <p class="text-4xl font-black tracking-tight text-orangebrand">01</p>
+        <div class="grid divide-y divide-bluebrand/10 border-y border-bluebrand/10 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x lg:divide-y-0">
+          <div class="reveal py-9 lg:px-8">
+            <span class="pillar-bullet pillar-bullet--orange" aria-hidden="true"></span>
             <h2 class="mt-5 text-xl font-extrabold">Dynamic Predictor Engine</h2>
             <p class="mt-3 max-w-sm text-sm leading-6 text-slate-600">Rank-aware predictions using historical cutoffs, current trends and exact category data.</p>
           </div>
-          <div class="reveal border-y border-bluebrand/10 py-9 md:border-x md:border-y-0 md:px-10">
+          <div class="reveal py-9 sm:border-l sm:border-bluebrand/10 lg:border-l lg:px-8">
             <p class="text-4xl font-black tracking-tight text-bluebrand">1,100<span class="text-mint">+</span></p>
             <h2 class="mt-5 text-xl font-extrabold">Verified College Directories</h2>
             <p class="mt-3 max-w-sm text-sm leading-6 text-slate-600">Fees, seats, bonds and infrastructure intelligence verified for MBBS and BDS colleges.</p>
           </div>
-          <div class="reveal py-9 md:pl-10">
-            <p class="text-4xl font-black tracking-tight text-mint">03</p>
+          <div class="reveal py-9 sm:border-t sm:border-bluebrand/10 lg:border-t-0 lg:px-8">
+            <span class="pillar-bullet pillar-bullet--mint" aria-hidden="true"></span>
             <h2 class="mt-5 text-xl font-extrabold">Smart Profile Routing</h2>
             <p class="mt-3 max-w-sm text-sm leading-6 text-slate-600">Recommendations shaped around your quota eligibility, home state and budget.</p>
+          </div>
+          <div class="reveal py-9 sm:border-t sm:border-l sm:border-bluebrand/10 lg:border-t-0 lg:px-8">
+            <p class="text-4xl font-black tracking-tight text-bluebrand">12<span class="text-mint">+ Yrs</span></p>
+            <h2 class="mt-5 text-xl font-extrabold">Of Rich Counselling Experience</h2>
+            <p class="mt-3 max-w-sm text-sm leading-6 text-slate-600">A decade-plus of guiding students through MBBS &amp; BDS admissions across India.</p>
           </div>
         </div>
       </div>
