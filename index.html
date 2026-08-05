@@ -289,13 +289,6 @@
     .topnav.is-visible { transform: translateY(0); }
     .topnav__brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; color: var(--navy); }
     .topnav__brand img { height: 56px; width: 180px; object-fit: cover; display: block; }
-    .topnav__cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 16px; border-radius: 999px;
-      background: linear-gradient(180deg, #f7743f, #ec4e18);
-      color: #fff; font-weight: 800; font-size: 13px;
-      box-shadow: 0 8px 22px rgba(241,91,42,.34), inset 0 1px 0 rgba(255,255,255,.28);
-    }
 
     /* ── Launchpad closing section ────────── */
     .launchpad {
@@ -342,26 +335,6 @@
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* ── Mobile sticky bottom bar ─────────── */
-    .mobile-cta {
-      position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 55;
-      display: none; align-items: center; justify-content: space-between; gap: 10px;
-      padding: 10px 12px 10px 16px;
-      background: rgba(7,27,51,.94); backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 18px;
-      box-shadow: 0 20px 44px rgba(7,27,51,.42);
-      transform: translateY(140%); transition: transform .35s cubic-bezier(.2,.8,.2,1);
-    }
-    .mobile-cta.is-visible { transform: translateY(0); }
-    .mobile-cta__label { color: #fff; font-weight: 800; font-size: 13px; letter-spacing: -.005em; line-height: 1.15; }
-    .mobile-cta__sub { color: rgba(255,255,255,.6); font-size: 11px; font-weight: 600; margin-top: 2px; }
-    .mobile-cta__btn {
-      display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px;
-      background: linear-gradient(180deg, #f7743f, #ec4e18); color: #fff; font-weight: 800; font-size: 13px;
-      box-shadow: 0 8px 20px rgba(241,91,42,.4), inset 0 1px 0 rgba(255,255,255,.28); white-space: nowrap;
-    }
-
     /* ── Mobile-specific tweaks ───────────── */
     @media (max-width: 767px) {
       .hero-last-line { font-size: .55em; }
@@ -378,10 +351,6 @@
       .phone img { border-radius: 18px; }
       .phone-left { transform: rotate(-4deg) translateY(18px); }
       .phone-right { transform: rotate(4deg); }
-      .mobile-cta { display: flex; }
-      /* leave breathing room so the sticky bar never covers content */
-      main { padding-bottom: 100px; }
-
       /* Mobile-only: scroll-linked pop-zoom on preview screenshots */
       .open-preview {
         transform: scale(.92);
@@ -414,7 +383,6 @@
       .float-badge { display: none; }
       .topnav { padding: 6px 12px; }
       .topnav__brand img { height: 46px; width: 148px; }
-      .topnav__cta { padding: 8px 12px; font-size: 12px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -435,10 +403,6 @@
   <nav id="topnav" class="topnav" aria-label="Primary">
     <a href="https://www.tabindia.org/" class="topnav__brand" aria-label="TAB India">
       <img src="assets/tab-india-logo-horizontal.png" alt="TAB India">
-    </a>
-    <a href="https://www.tabindia.org/" class="topnav__cta cta-sheen" rel="noopener">
-      Explore TAB India
-      <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </nav>
 
@@ -747,18 +711,6 @@
     </div>
   </footer>
 
-  <!-- ── MOBILE STICKY CTA ────────────────────────── -->
-  <div id="mobileCta" class="mobile-cta" aria-hidden="true">
-    <div class="min-w-0">
-      <div class="mobile-cta__label">Ready to see your chances?</div>
-      <div class="mobile-cta__sub">Continue on tabindia.org</div>
-    </div>
-    <a href="https://www.tabindia.org/" class="mobile-cta__btn cta-sheen" rel="noopener">
-      Open
-      <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-  </div>
-
   <script>
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -814,19 +766,13 @@
       updateZoom();
     }
 
-    // Sticky top nav + mobile CTA — appear after hero scrolls out
+    // Sticky top nav — appears after hero scrolls out
     const topnav = document.getElementById("topnav");
-    const mobileCta = document.getElementById("mobileCta");
     const heroSection = document.querySelector(".hero-mesh");
     if (heroSection && topnav) {
       const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          const show = !entry.isIntersecting;
-          topnav.classList.toggle("is-visible", show);
-          if (mobileCta) {
-            mobileCta.classList.toggle("is-visible", show);
-            mobileCta.setAttribute("aria-hidden", show ? "false" : "true");
-          }
+          topnav.classList.toggle("is-visible", !entry.isIntersecting);
         });
       }, { threshold: 0, rootMargin: "-80px 0px 0px 0px" });
       scrollObserver.observe(heroSection);
