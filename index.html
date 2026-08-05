@@ -387,6 +387,16 @@
       background: linear-gradient(180deg,#22c55e,#15803d); color: #fff;
       font-size: 10px; font-weight: 900; letter-spacing: .2em;
     }
+    .free-chip--hero {
+      background: linear-gradient(180deg,#f0fdf4,#dcfce7);
+      border-color: rgba(22,163,74,.45);
+      box-shadow: 0 12px 30px rgba(22,163,74,.22), inset 0 1px 0 rgba(255,255,255,.7);
+      color: #064e3b;
+    }
+    .free-chip--hero .free-chip__tag {
+      background: linear-gradient(180deg,#16a34a,#065f46);
+      box-shadow: 0 2px 6px rgba(6,95,70,.35);
+    }
 
     /* ── Dedicated Free ribbon (between sections) ── */
     .free-ribbon {
@@ -417,12 +427,13 @@
       transition: transform .25s ease, box-shadow .25s ease;
     }
     .free-ribbon__card:hover { transform: translateY(-3px); box-shadow: 0 26px 60px rgba(22,163,74,.22); }
-    .free-ribbon__card::after {
-      content: "FREE"; position: absolute; top: -12px; right: 18px;
-      padding: 4px 10px; border-radius: 999px; letter-spacing: .22em;
-      font-size: 10px; font-weight: 900; color: #fff;
-      background: linear-gradient(180deg,#22c55e,#15803d);
-      box-shadow: 0 6px 14px rgba(22,163,74,.32);
+    .free-ribbon__card--forever {
+      background: linear-gradient(180deg, #fff, #f0fdf4);
+      border-color: rgba(22,163,74,.40);
+      box-shadow: 0 24px 60px rgba(22,163,74,.22);
+    }
+    .free-ribbon__card--forever .free-ribbon__icon {
+      background: linear-gradient(180deg,#22c55e,#15803d); color: #fff;
     }
     .free-ribbon__icon {
       display: inline-flex; align-items: center; justify-content: center;
@@ -575,14 +586,17 @@
               Create your profile
               <span class="free-chip__tag">FREE</span>
             </span>
-            <span class="free-chip">
+            <span class="free-chip free-chip--hero">
               <span class="free-chip__check" aria-hidden="true">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
-              Preview every tool
-              <span class="free-chip__tag">FREE</span>
+              Eligibility Check
+              <span class="free-chip__tag">100% FREE</span>
             </span>
           </div>
+          <p class="mt-3 text-center text-xs font-semibold text-emerald-800/80 lg:text-left">
+            Plus a free preview of every other tool after profile setup.
+          </p>
           <div class="mt-6 flex justify-center lg:justify-start" aria-label="Prediction process: rank mapped, quota checked, matches ready">
             <div class="decision-flow" aria-hidden="true"><b>Rank mapped</b><i></i><b>Quota checked</b><i></i><b>Matches ready</b></div>
           </div>
@@ -661,14 +675,14 @@
           <h2 class="hero-title mt-5 text-3xl font-black leading-[1.05] tracking-[-.035em] text-navy sm:text-4xl">
             Everyone starts <span class="gradient-text">for free.</span>
           </h2>
-          <p class="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate-600 sm:text-base">
-            Fill your profile in a minute and unlock a free preview across every TAB India tool — Eligibility, College Chances, Cutoffs and more — before you commit.
+          <p class="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
+            Set up your profile in a minute, use <span class="font-bold text-emerald-700">Eligibility Check</span> completely free, and get a free preview of every other TAB India tool.
           </p>
         </div>
 
         <div class="mt-10 grid gap-5 sm:grid-cols-2 sm:gap-6">
           <div class="free-ribbon__card">
-            <span class="absolute -top-3 left-5 rounded-full bg-white px-3 py-1 text-[10px] font-black uppercase tracking-[.22em] text-emerald-700 shadow-[0_4px_12px_rgba(22,163,74,.14)] ring-1 ring-emerald-200">Step 1</span>
+            <span class="absolute -top-3 left-5 rounded-full bg-white px-3 py-1 text-[10px] font-black uppercase tracking-[.22em] text-emerald-700 shadow-[0_4px_12px_rgba(22,163,74,.14)] ring-1 ring-emerald-200">Free · Setup</span>
             <div class="flex items-start gap-4">
               <span class="free-ribbon__icon" aria-hidden="true">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM20 21a8 8 0 1 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -679,22 +693,25 @@
               </div>
             </div>
           </div>
-          <div class="free-ribbon__card">
-            <span class="absolute -top-3 left-5 rounded-full bg-white px-3 py-1 text-[10px] font-black uppercase tracking-[.22em] text-emerald-700 shadow-[0_4px_12px_rgba(22,163,74,.14)] ring-1 ring-emerald-200">Step 2</span>
+          <div class="free-ribbon__card free-ribbon__card--forever">
+            <span class="absolute -top-3 left-5 rounded-full bg-emerald-600 px-3 py-1 text-[10px] font-black uppercase tracking-[.22em] text-white shadow-[0_6px_16px_rgba(22,163,74,.30)]">Free forever</span>
             <div class="flex items-start gap-4">
               <span class="free-ribbon__icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M20.5 12a8.5 8.5 0 1 1-17 0 8.5 8.5 0 0 1 17 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
               <div class="min-w-0">
-                <h3 class="text-lg font-extrabold text-navy">Preview every tool</h3>
-                <p class="mt-1 text-sm leading-6 text-slate-600">Get a free look inside Eligibility Check, College Chances, the Cutoff Tracker and the College Directory before you decide to upgrade.</p>
+                <h3 class="text-lg font-extrabold text-navy">Eligibility Check</h3>
+                <p class="mt-1 text-sm leading-6 text-slate-600">See every counselling route open to you — All India, State, Deemed and Management. <span class="font-bold text-emerald-700">100% free. No preview limits.</span></p>
               </div>
             </div>
           </div>
         </div>
 
-        <p class="mt-8 text-center text-xs font-bold uppercase tracking-[.18em] text-emerald-800/70">
-          No signup gate · No credit card · See the value first
+        <p class="mt-8 text-center text-sm text-slate-700">
+          <span class="font-bold text-emerald-700">Plus:</span> free preview of every other tool — College Chances, Cutoff Tracker, College Directory and more — after profile setup.
+        </p>
+        <p class="mt-3 text-center text-xs font-bold uppercase tracking-[.18em] text-emerald-800/70">
+          No signup gate · No credit card · No preview limit on Eligibility
         </p>
       </div>
     </section>
@@ -704,7 +721,7 @@
       <div class="mx-auto max-w-4xl px-5 pb-16 pt-20 text-center sm:px-8 sm:pb-20 sm:pt-28">
         <p class="eyebrow text-xs font-extrabold uppercase text-orangebrand">One profile. Every possibility.</p>
         <h2 class="mt-4 text-4xl font-black leading-tight tracking-[-.04em] sm:text-5xl">See every tool <span class="serif-accent gradient-text">in action.</span></h2>
-        <p class="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-600">Explore each TAB India decision-support experience in its own dedicated view — <span class="font-bold text-emerald-700">every tool below opens up for free after profile setup.</span></p>
+        <p class="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-600"><span class="font-bold text-emerald-700">Eligibility Check is completely free forever</span> — and every other tool below is free to preview once your profile is set up.</p>
       </div>
 
       <section class="border-t border-bluebrand/10 bg-white py-16 sm:py-24">
@@ -715,14 +732,14 @@
           <div class="reveal order-1 lg:order-2">
             <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">
               01 · Eligibility Check
-              <span class="free-pill">Free</span>
+              <span class="free-pill">100% Free</span>
             </p>
             <h3 class="mt-4 text-3xl font-black tracking-[-.035em] sm:text-4xl">Know every counselling route open to you.</h3>
             <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">Instantly identify your All India, State, Deemed and Management eligibility using your domicile, category, education and saved profile details.</p>
             <div class="mt-6">
               <span class="free-tour-banner">
-                <span class="stamp">FREE PREVIEW</span>
-                All tools included after you create your free profile.
+                <span class="stamp">FREE FOREVER</span>
+                No card, no paywall, no preview limits — this one's always free.
               </span>
             </div>
           </div>
@@ -844,8 +861,8 @@
                 <a href="https://www.tabindia.org/" class="launch-tile launch-tile--free" rel="noopener">
                   <span class="num">01</span>
                   <span class="min-w-0">
-                    <span class="label block">Eligibility Check <span class="free-pill free-pill--dark">Free</span></span>
-                    <span class="desc block">Every counselling route mapped in seconds.</span>
+                    <span class="label block">Eligibility Check <span class="free-pill free-pill--dark">Free Forever</span></span>
+                    <span class="desc block">Every counselling route mapped in seconds — always free.</span>
                   </span>
                 </a>
                 <a href="https://www.tabindia.org/" class="launch-tile" rel="noopener">
@@ -874,7 +891,7 @@
                   Open TAB India and pick up right where the counselling season is happening.
                 </p>
                 <ul class="mt-6 space-y-3 text-sm text-blue-100/85">
-                  <li class="flex items-start gap-3"><span class="mt-1 text-emerald-300">✓</span> <span><span class="font-bold text-emerald-200">Free to start</span> — create your profile, then preview every tool.</span></li>
+                  <li class="flex items-start gap-3"><span class="mt-1 text-emerald-300">✓</span> <span><span class="font-bold text-emerald-200">Eligibility Check is completely free</span> — plus a free preview of every other tool.</span></li>
                   <li class="flex items-start gap-3"><span class="mt-1 text-orange-300">✓</span> No wait — jump straight into the platform.</li>
                   <li class="flex items-start gap-3"><span class="mt-1 text-orange-300">✓</span> Every tool sync'd to a single profile.</li>
                   <li class="flex items-start gap-3"><span class="mt-1 text-orange-300">✓</span> Optimised for both desktop and mobile.</li>
