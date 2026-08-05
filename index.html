@@ -331,6 +331,36 @@
     .launch-tile .label { font-weight: 700; color: #eaf2ff; }
     .launch-tile .desc { color: rgba(220,232,247,.62); font-size: 12px; margin-top: 2px; }
 
+    /* ── Free pill (light + dark variants) ── */
+    .free-pill {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 9px 3px 8px; margin-left: 10px;
+      background: #dcfce7; color: #15803d;
+      border: 1px solid rgba(22,163,74,.25);
+      border-radius: 999px;
+      font-size: 10px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase;
+      vertical-align: middle; line-height: 1;
+    }
+    .free-pill::before {
+      content: ""; width: 6px; height: 6px; border-radius: 999px;
+      background: #16a34a; box-shadow: 0 0 0 3px rgba(22,163,74,.18);
+    }
+    .free-pill--dark {
+      background: rgba(74,222,128,.14); color: #bbf7d0;
+      border: 1px solid rgba(134,239,172,.28);
+    }
+    .free-pill--dark::before { background: #4ade80; box-shadow: 0 0 0 3px rgba(74,222,128,.22); }
+    .free-note {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 12px 7px 10px; border-radius: 999px;
+      background: rgba(220,252,231,.7); color: #14532d;
+      border: 1px solid rgba(22,163,74,.22);
+      font-size: 12px; font-weight: 700;
+      backdrop-filter: blur(6px);
+    }
+    .free-note b { color: #15803d; font-weight: 900; }
+    .free-note .dot { width: 8px; height: 8px; border-radius: 999px; background: #16a34a; box-shadow: 0 0 0 3px rgba(22,163,74,.18); }
+
     /* ── Reveal utility ───────────────────── */
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.visible { opacity: 1; transform: none; }
@@ -452,6 +482,12 @@
           <div class="mt-7 flex justify-center lg:justify-start" aria-label="Prediction process: rank mapped, quota checked, matches ready">
             <div class="decision-flow" aria-hidden="true"><b>Rank mapped</b><i></i><b>Quota checked</b><i></i><b>Matches ready</b></div>
           </div>
+          <div class="mt-5 flex justify-center lg:justify-start">
+            <span class="free-note">
+              <span class="dot" aria-hidden="true"></span>
+              <span><b>Eligibility Check</b> &amp; <b>Profile creation</b> are free.</span>
+            </span>
+          </div>
         </div>
 
         <div class="monitor-scene relative mx-auto w-full max-w-3xl">
@@ -530,7 +566,10 @@
             <div class="open-preview screen-reveal"><img src="assets/eligibility-check-desktop.jpeg" width="2560" height="1600" alt="TAB India Eligibility Check dashboard" loading="lazy"></div>
           </figure>
           <div class="reveal order-1 lg:order-2">
-            <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">01 · Eligibility Check</p>
+            <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">
+              01 · Eligibility Check
+              <span class="free-pill">Free</span>
+            </p>
             <h3 class="mt-4 text-3xl font-black tracking-[-.035em] sm:text-4xl">Know every counselling route open to you.</h3>
             <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">Instantly identify your All India, State, Deemed and Management eligibility using your domicile, category, education and saved profile details.</p>
           </div>
@@ -651,7 +690,10 @@
               <div class="mt-5 grid gap-3">
                 <a href="https://www.tabindia.org/" class="launch-tile" rel="noopener">
                   <span class="num">01</span>
-                  <span class="min-w-0"><span class="label block">Eligibility Check</span><span class="desc block">Every counselling route mapped in seconds.</span></span>
+                  <span class="min-w-0">
+                    <span class="label block">Eligibility Check <span class="free-pill free-pill--dark">Free</span></span>
+                    <span class="desc block">Every counselling route mapped in seconds.</span>
+                  </span>
                 </a>
                 <a href="https://www.tabindia.org/" class="launch-tile" rel="noopener">
                   <span class="num">02</span>
