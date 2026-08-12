@@ -395,7 +395,26 @@
       border-radius: 999px; animation: signup-spin .7s linear infinite;
     }
     @keyframes signup-spin { to { transform: rotate(360deg); } }
-    #landing-turnstile { min-height: 65px; }
+    .captcha-shell {
+      display: flex; min-height: 52px; align-items: center; gap: 12px; padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,.14); border-radius: 14px; background: rgba(255,255,255,.07);
+    }
+    .captcha-indicator {
+      display: grid; width: 28px; height: 28px; flex: 0 0 auto; place-items: center;
+      border: 2px solid rgba(255,255,255,.28); border-top-color: #f15b2a; border-radius: 999px;
+      animation: signup-spin .8s linear infinite;
+    }
+    .captcha-shell.is-verified { border-color: rgba(52,211,153,.38); background: rgba(16,185,129,.1); }
+    .captcha-shell.is-verified .captcha-indicator {
+      border: 0; background: #10b981; color: #fff; animation: none;
+    }
+    .captcha-shell.is-error { border-color: rgba(248,113,113,.42); background: rgba(239,68,68,.1); }
+    .captcha-shell.is-error .captcha-indicator { border-color: #f87171; animation: none; }
+    .captcha-copy { min-width: 0; }
+    .captcha-title { color: #fff; font-size: 12px; font-weight: 800; }
+    .captcha-detail { margin-top: 1px; color: rgba(219,234,254,.55); font-size: 10px; font-weight: 600; }
+    #landing-turnstile { min-height: 0; }
+    #landing-turnstile:not(:empty) { margin-top: 8px; }
     #landing-turnstile iframe { max-width: 100%; }
     .signup-modal {
       width: min(92vw, 520px); max-width: 520px; max-height: min(92dvh, 760px);
@@ -1044,7 +1063,14 @@
                   </div>
                 </div>
 
-                <div id="landing-turnstile" aria-label="Security verification"></div>
+                <div id="captcha-shell" class="captcha-shell" role="status" aria-live="polite">
+                  <span id="captcha-indicator" class="captcha-indicator" aria-hidden="true"></span>
+                  <span class="captcha-copy">
+                    <span id="captcha-title" class="captcha-title block">Checking browser security…</span>
+                    <span id="captcha-detail" class="captcha-detail block">Protected by Cloudflare Turnstile</span>
+                  </span>
+                </div>
+                <div id="landing-turnstile" aria-label="Cloudflare security verification"></div>
                 <p id="signup-status" class="signup-status" role="status" aria-live="polite"></p>
                 <button id="signup-submit" class="signup-submit" type="submit">
                   <span id="signup-submit-label">Send OTP</span>
@@ -1154,6 +1180,10 @@
       const submitLabel = document.getElementById("signup-submit-label");
       const submitArrow = document.getElementById("signup-submit-arrow");
       const status = document.getElementById("signup-status");
+      const captchaShell = document.getElementById("captcha-shell");
+      const captchaIndicator = document.getElementById("captcha-indicator");
+      const captchaTitle = document.getElementById("captcha-title");
+      const captchaDetail = document.getElementById("captcha-detail");
       const resendButton = document.getElementById("resend-otp");
       const changePhoneButton = document.getElementById("change-phone");
       let stage = "phone";
@@ -1164,6 +1194,13 @@
       function setStatus(message, type = "") {
         status.textContent = message;
         status.className = `signup-status${type ? ` is-${type}` : ""}`;
+      }
+
+      function setCaptchaState(state) {
+        captchaShell.className = `captcha-shell${state === "ready" ? " is-verified" : state === "error" ? " is-error" : ""}`;
+        captchaIndicator.textContent = state === "ready" ? "✓" : state === "error" ? "!" : "";
+        captchaTitle.textContent = state === "ready" ? "Security check complete" : state === "error" ? "Security check unavailable" : "Checking browser security…";
+        captchaDetail.textContent = state === "ready" ? "You can securely continue" : state === "error" ? "Refresh the page and try again" : "Protected by Cloudflare Turnstile";
       }
 
       function setLoading(loading, label) {
@@ -1186,14 +1223,17 @@
           sitekey: TURNSTILE_SITE_KEY,
           theme: "light",
           size: "flexible",
-          callback: (token) => { captchaToken = token; setStatus(""); },
-          "expired-callback": () => { captchaToken = ""; },
-          "error-callback": () => { captchaToken = ""; setStatus("Security verification could not load. Please refresh and try again.", "error"); },
+          appearance: "always",
+          execution: "render",
+          callback: (token) => { captchaToken = token; setCaptchaState("ready"); setStatus(""); },
+          "expired-callback": () => { captchaToken = ""; setCaptchaState("checking"); },
+          "error-callback": () => { captchaToken = ""; setCaptchaState("error"); setStatus("Security verification could not load. Please refresh and try again.", "error"); },
         });
       }
 
       function resetTurnstile() {
         captchaToken = "";
+        setCaptchaState("checking");
         if (window.turnstile && turnstileWidget !== null) window.turnstile.reset(turnstileWidget);
       }
 
