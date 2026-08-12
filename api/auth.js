@@ -1,4 +1,4 @@
-const TAB_INDIA_AUTH_BASE = "https://www.tabindia.org/api/auth/phone";
+const TAB_INDIA_AUTH_BASE = "https://tabindia.org/api/auth/phone";
 const ACTIONS = new Map([
   ["send-otp", "send-otp"],
   ["signup", "signup"],
