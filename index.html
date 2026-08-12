@@ -1142,7 +1142,7 @@
     // Embedded mobile OTP login/signup. The main TAB India API verifies the
     // number and writes the shared .tabindia.org session cookie before redirect.
     {
-      const AUTH_BASE = "https://www.tabindia.org/api/auth/phone";
+      const AUTH_ENDPOINT = "/api/auth";
       const TURNSTILE_SITE_KEY = "0x4AAAAAADstLDxnf3UqfaiJ";
       const form = document.getElementById("landing-signup-form");
       const phoneInput = document.getElementById("signup-phone");
@@ -1236,10 +1236,9 @@
         setLoading(true, "Sending OTP…");
         setStatus("");
         try {
-          const response = await fetch(`${AUTH_BASE}/send-otp`, {
+          const response = await fetch(`${AUTH_ENDPOINT}?action=send-otp`, {
             method: "POST",
-            mode: "cors",
-            credentials: "include",
+            credentials: "same-origin",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ phone, purpose: "signup", captchaToken }),
           });
@@ -1276,10 +1275,9 @@
         setLoading(true, "Verifying…");
         setStatus("");
         try {
-          const response = await fetch(`${AUTH_BASE}/signup`, {
+          const response = await fetch(`${AUTH_ENDPOINT}?action=signup`, {
             method: "POST",
-            mode: "cors",
-            credentials: "include",
+            credentials: "same-origin",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ phone: cleanPhone(), otp, name: "", captchaToken }),
           });
