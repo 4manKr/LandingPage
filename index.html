@@ -34,6 +34,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@600;700;800;900&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <script>
+    window.onLandingTurnstileReady = function () {
+      window.dispatchEvent(new Event("landing-turnstile-ready"));
+    };
+  </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&amp;onload=onLandingTurnstileReady" async defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -348,6 +354,74 @@
     .launch-tile--free .num { color: #4ade80; }
     .launch-tile--free:hover { background: linear-gradient(135deg, rgba(34,197,94,.22), rgba(74,222,128,.10)); border-color: rgba(134,239,172,.55); }
 
+    /* ── Embedded TAB India signup ───────────────────── */
+    .signup-panel { position: relative; scroll-margin-top: 88px; }
+    .signup-label {
+      display: block; margin-bottom: 7px; color: rgba(234,242,255,.78);
+      font-size: 11px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase;
+    }
+    .signup-field {
+      display: flex; align-items: center; min-height: 54px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,.2); border-radius: 14px;
+      background: rgba(255,255,255,.09); transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .signup-field:focus-within {
+      border-color: rgba(241,91,42,.9); background: rgba(255,255,255,.13);
+      box-shadow: 0 0 0 4px rgba(241,91,42,.16);
+    }
+    .signup-prefix {
+      align-self: stretch; display: grid; place-items: center; padding: 0 14px;
+      border-right: 1px solid rgba(255,255,255,.14); color: #fff; font-size: 15px; font-weight: 800;
+    }
+    .signup-input {
+      width: 100%; min-width: 0; min-height: 52px; padding: 0 15px; border: 0; outline: 0;
+      background: transparent; color: #fff; font-size: 16px; font-weight: 700;
+    }
+    .signup-input::placeholder { color: rgba(220,232,247,.43); font-weight: 500; }
+    .signup-submit {
+      display: inline-flex; width: 100%; min-height: 56px; align-items: center; justify-content: center; gap: 10px;
+      border-radius: 14px; background: linear-gradient(180deg,#f7743f,#ec4e18); color: #fff;
+      font-size: 16px; font-weight: 900; box-shadow: 0 14px 38px rgba(241,91,42,.28);
+      transition: transform .2s ease, filter .2s ease, opacity .2s ease;
+    }
+    .signup-submit:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.06); }
+    .signup-submit:focus-visible { outline: 3px solid rgba(255,255,255,.8); outline-offset: 3px; }
+    .signup-submit:disabled { cursor: wait; opacity: .62; }
+    .signup-status { min-height: 22px; font-size: 13px; font-weight: 700; line-height: 1.55; }
+    .signup-status.is-error { color: #fecaca; }
+    .signup-status.is-success { color: #bbf7d0; }
+    .signup-spinner {
+      width: 17px; height: 17px; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff;
+      border-radius: 999px; animation: signup-spin .7s linear infinite;
+    }
+    @keyframes signup-spin { to { transform: rotate(360deg); } }
+    #landing-turnstile { min-height: 65px; }
+    #landing-turnstile iframe { max-width: 100%; }
+    .signup-modal {
+      width: min(92vw, 520px); max-width: 520px; max-height: min(92dvh, 760px);
+      margin: auto; padding: 0; overflow: visible; border: 0; border-radius: 24px;
+      background: transparent; color: #fff;
+    }
+    .signup-modal::backdrop { background: rgba(3,14,28,.72); backdrop-filter: blur(8px); }
+    .signup-modal[open] { animation: modal-enter .24s cubic-bezier(.2,.8,.2,1) both; }
+    .signup-modal__surface {
+      position: relative; max-height: min(92dvh, 760px); overflow-y: auto;
+      border: 1px solid rgba(255,255,255,.16); border-radius: 24px;
+      background: radial-gradient(circle at 95% 0,rgba(241,91,42,.24),transparent 36%),linear-gradient(155deg,#06172c,#0a2647);
+      box-shadow: 0 32px 100px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.12);
+      overscroll-behavior: contain;
+    }
+    .signup-modal__close {
+      position: sticky; z-index: 4; top: 12px; float: right; display: grid; place-items: center;
+      width: 44px; height: 44px; margin: 12px 12px -56px 0; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16); background: rgba(6,23,44,.84); color: #fff;
+      backdrop-filter: blur(10px); transition: background .2s ease, transform .2s ease;
+    }
+    .signup-modal__close:hover { background: rgba(241,91,42,.92); transform: rotate(4deg); }
+    .signup-modal__close:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    .signup-modal .signup-panel { border: 0 !important; padding: 34px 28px 30px !important; }
+    @keyframes modal-enter { from { opacity: 0; transform: translateY(14px) scale(.975); } to { opacity: 1; transform: none; } }
+
     /* ── Free pill (light + dark variants) ── */
     .free-pill {
       display: inline-flex; align-items: center; gap: 6px;
@@ -540,6 +614,10 @@
       .float-badge { display: none; }
       .topnav { padding: 6px 12px; }
       .topnav__brand img { height: 46px; width: 148px; }
+      .signup-panel { border-top: 1px solid rgba(255,255,255,.12); padding-top: 30px; }
+      .signup-modal { width: calc(100vw - 20px); max-height: calc(100dvh - 20px); }
+      .signup-modal__surface { max-height: calc(100dvh - 20px); border-radius: 20px; }
+      .signup-modal .signup-panel { padding: 30px 18px 24px !important; border-top: 0; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -562,6 +640,15 @@
       <img src="assets/tab-india-logo-horizontal.png" alt="TAB India">
     </a>
   </nav>
+
+  <dialog id="signup-dialog" class="signup-modal" aria-labelledby="signup-title">
+    <div class="signup-modal__surface">
+      <button id="close-signup-dialog" class="signup-modal__close" type="button" aria-label="Close login and signup">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </button>
+      <div id="signup-modal-slot"></div>
+    </div>
+  </dialog>
 
   <main id="main">
     <!-- ── HERO ─────────────────────────────────────── -->
@@ -597,8 +684,8 @@
             <span class="font-semibold text-navy">TAB India</span> platform.
           </p>
           <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:gap-4 lg:justify-start">
-            <a href="https://www.tabindia.org/" class="cta-sheen btn-primary w-full sm:w-auto" rel="noopener">
-              Explore TAB India
+            <a href="#signup" data-open-signup class="cta-sheen btn-primary w-full sm:w-auto">
+              Login / Create Free Account
               <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
             <a href="#tour" class="btn-ghost w-full sm:w-auto">
@@ -929,29 +1016,45 @@
               </div>
             </div>
 
-            <div class="flex flex-col justify-between gap-8">
-              <div>
-                <p class="text-xs font-extrabold uppercase tracking-[.18em] text-orange-200">One destination</p>
-                <p class="mt-4 text-2xl font-black leading-tight tracking-[-.02em] text-white sm:text-3xl">
-                  Open TAB India and pick up right where the counselling season is happening.
-                </p>
-                <ul class="mt-6 space-y-3 text-sm text-blue-100/85">
-                  <li class="flex items-start gap-3"><span class="mt-1 text-emerald-300">✓</span> <span><span class="font-bold text-emerald-200">Eligibility Check &amp; Content are completely free</span> — plus a free preview of every other tool.</span></li>
-                  <li class="flex items-start gap-3"><span class="mt-1 text-orange-300">✓</span> No wait — jump straight into the platform.</li>
-                  <li class="flex items-start gap-3"><span class="mt-1 text-orange-300">✓</span> Every tool sync'd to a single profile.</li>
-                  <li class="flex items-start gap-3"><span class="mt-1 text-orange-300">✓</span> Optimised for both desktop and mobile.</li>
-                </ul>
-              </div>
+            <div id="signup" class="signup-panel lg:border-l lg:border-white/10 lg:pl-12" aria-labelledby="signup-title">
+              <p class="text-xs font-extrabold uppercase tracking-[.18em] text-orange-200">Start here · Free account</p>
+              <h3 id="signup-title" class="mt-3 text-2xl font-black leading-tight tracking-[-.025em] text-white sm:text-3xl">Login or create your TAB India account</h3>
+              <p class="mt-3 text-sm leading-6 text-blue-100/70">Enter your mobile number once. Existing users open their saved profile; new users continue with a fresh profile.</p>
 
-              <div class="flex flex-col gap-3">
-                <a href="https://www.tabindia.org/" class="cta-sheen btn-primary w-full text-lg" rel="noopener">
-                  Go to tabindia.org
-                  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </a>
-                <p class="text-center text-[11px] font-semibold uppercase tracking-[.14em] text-blue-100/55">
-                  Opens the full TAB India experience
+              <form id="landing-signup-form" class="mt-7 space-y-4" novalidate>
+                <div id="signup-phone-step">
+                  <label class="signup-label" for="signup-phone">Mobile number</label>
+                  <div class="signup-field">
+                    <span class="signup-prefix" aria-hidden="true">+91</span>
+                    <input id="signup-phone" class="signup-input" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="10" pattern="[0-9]{10}" placeholder="10-digit mobile number" aria-describedby="signup-helper" required>
+                  </div>
+                </div>
+
+                <div id="signup-otp-step" hidden>
+                  <div class="flex items-end justify-between gap-3">
+                    <label class="signup-label" for="signup-otp">Verification code</label>
+                    <button id="change-phone" type="button" class="mb-1 text-xs font-bold text-orange-200 underline underline-offset-4 hover:text-white">Change number</button>
+                  </div>
+                  <div class="signup-field">
+                    <input id="signup-otp" class="signup-input tracking-[.35em]" name="otp" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="Enter OTP" required>
+                  </div>
+                  <div class="mt-2 flex items-center justify-between gap-3 text-xs text-blue-100/60">
+                    <span id="masked-phone"></span>
+                    <button id="resend-otp" type="button" class="min-h-11 font-bold text-orange-200 hover:text-white disabled:cursor-not-allowed disabled:text-blue-100/35">Resend OTP</button>
+                  </div>
+                </div>
+
+                <div id="landing-turnstile" aria-label="Security verification"></div>
+                <p id="signup-status" class="signup-status" role="status" aria-live="polite"></p>
+                <button id="signup-submit" class="signup-submit" type="submit">
+                  <span id="signup-submit-label">Send OTP</span>
+                  <svg id="signup-submit-arrow" aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <p id="signup-helper" class="flex items-center justify-center gap-2 text-center text-[11px] font-semibold leading-5 text-blue-100/50">
+                  <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke="currentColor" stroke-width="1.8"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Secure OTP verification · No password required
                 </p>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -1034,6 +1137,221 @@
         });
       }, { threshold: 0, rootMargin: "-80px 0px 0px 0px" });
       scrollObserver.observe(heroSection);
+    }
+
+    // Embedded mobile OTP login/signup. The main TAB India API verifies the
+    // number and writes the shared .tabindia.org session cookie before redirect.
+    {
+      const AUTH_BASE = "https://www.tabindia.org/api/auth/phone";
+      const TURNSTILE_SITE_KEY = "0x4AAAAAADstLDxnf3UqfaiJ";
+      const form = document.getElementById("landing-signup-form");
+      const phoneInput = document.getElementById("signup-phone");
+      const otpInput = document.getElementById("signup-otp");
+      const phoneStep = document.getElementById("signup-phone-step");
+      const otpStep = document.getElementById("signup-otp-step");
+      const maskedPhone = document.getElementById("masked-phone");
+      const submitButton = document.getElementById("signup-submit");
+      const submitLabel = document.getElementById("signup-submit-label");
+      const submitArrow = document.getElementById("signup-submit-arrow");
+      const status = document.getElementById("signup-status");
+      const resendButton = document.getElementById("resend-otp");
+      const changePhoneButton = document.getElementById("change-phone");
+      let stage = "phone";
+      let captchaToken = "";
+      let turnstileWidget = null;
+      let resendTimer = null;
+
+      function setStatus(message, type = "") {
+        status.textContent = message;
+        status.className = `signup-status${type ? ` is-${type}` : ""}`;
+      }
+
+      function setLoading(loading, label) {
+        submitButton.disabled = loading;
+        submitLabel.textContent = label;
+        submitArrow.hidden = loading;
+        const oldSpinner = submitButton.querySelector(".signup-spinner");
+        if (oldSpinner) oldSpinner.remove();
+        if (loading) {
+          const spinner = document.createElement("span");
+          spinner.className = "signup-spinner";
+          spinner.setAttribute("aria-hidden", "true");
+          submitButton.prepend(spinner);
+        }
+      }
+
+      function renderTurnstile() {
+        if (!form || turnstileWidget !== null || !window.turnstile) return;
+        turnstileWidget = window.turnstile.render("#landing-turnstile", {
+          sitekey: TURNSTILE_SITE_KEY,
+          theme: "light",
+          size: "flexible",
+          callback: (token) => { captchaToken = token; setStatus(""); },
+          "expired-callback": () => { captchaToken = ""; },
+          "error-callback": () => { captchaToken = ""; setStatus("Security verification could not load. Please refresh and try again.", "error"); },
+        });
+      }
+
+      function resetTurnstile() {
+        captchaToken = "";
+        if (window.turnstile && turnstileWidget !== null) window.turnstile.reset(turnstileWidget);
+      }
+
+      async function readJson(response) {
+        const text = await response.text();
+        if (!text) return {};
+        try { return JSON.parse(text); }
+        catch { return { error: "TAB India returned an invalid response. Please try again." }; }
+      }
+
+      function cleanPhone() { return phoneInput.value.replace(/\D/g, "").slice(-10); }
+
+      function startResendCountdown(seconds = 30) {
+        if (resendTimer) window.clearInterval(resendTimer);
+        let remaining = seconds;
+        resendButton.disabled = true;
+        resendButton.textContent = `Resend in ${remaining}s`;
+        resendTimer = window.setInterval(() => {
+          remaining -= 1;
+          resendButton.textContent = remaining > 0 ? `Resend in ${remaining}s` : "Resend OTP";
+          if (remaining <= 0) {
+            window.clearInterval(resendTimer);
+            resendTimer = null;
+            resendButton.disabled = false;
+          }
+        }, 1000);
+      }
+
+      async function sendOtp() {
+        const phone = cleanPhone();
+        if (phone.length !== 10) {
+          setStatus("Enter a valid 10-digit mobile number.", "error");
+          phoneInput.focus();
+          return;
+        }
+        if (!captchaToken) {
+          setStatus("Complete the security verification first.", "error");
+          return;
+        }
+        setLoading(true, "Sending OTP…");
+        setStatus("");
+        try {
+          const response = await fetch(`${AUTH_BASE}/send-otp`, {
+            method: "POST",
+            mode: "cors",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ phone, purpose: "signup", captchaToken }),
+          });
+          const data = await readJson(response);
+          if (!response.ok) throw new Error(data.error || "Could not send OTP. Please try again.");
+          stage = "otp";
+          phoneStep.hidden = true;
+          otpStep.hidden = false;
+          maskedPhone.textContent = `OTP sent to +91 ${phone.slice(0, 2)}••••${phone.slice(-4)}`;
+          submitLabel.textContent = "Verify & Continue";
+          setStatus("OTP sent. Enter the code from your SMS, then complete the security check once more.", "success");
+          startResendCountdown();
+          resetTurnstile();
+          otpInput.focus();
+        } catch (error) {
+          setStatus(error instanceof Error ? error.message : "Could not send OTP. Please try again.", "error");
+          resetTurnstile();
+        } finally {
+          setLoading(false, stage === "otp" ? "Verify & Continue" : "Send OTP");
+        }
+      }
+
+      async function verifyOtp() {
+        const otp = otpInput.value.replace(/\D/g, "");
+        if (otp.length < 4) {
+          setStatus("Enter the OTP received by SMS.", "error");
+          otpInput.focus();
+          return;
+        }
+        if (!captchaToken) {
+          setStatus("Complete the security verification first.", "error");
+          return;
+        }
+        setLoading(true, "Verifying…");
+        setStatus("");
+        try {
+          const response = await fetch(`${AUTH_BASE}/signup`, {
+            method: "POST",
+            mode: "cors",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ phone: cleanPhone(), otp, name: "", captchaToken }),
+          });
+          const data = await readJson(response);
+          if (!response.ok) throw new Error(data.error || "Could not verify OTP. Please try again.");
+          const isNew = Boolean(data.is_new);
+          setStatus(isNew ? "Account created. Opening your new TAB India profile…" : "Welcome back. Opening your saved TAB India account…", "success");
+          if (typeof window.fbq === "function" && isNew) window.fbq("track", "CompleteRegistration");
+          window.setTimeout(() => window.location.assign(data.redirect || "https://www.tabindia.org/college-chances"), 550);
+        } catch (error) {
+          setStatus(error instanceof Error ? error.message : "Could not verify OTP. Please try again.", "error");
+          resetTurnstile();
+          setLoading(false, "Verify & Continue");
+        }
+      }
+
+      if (form) {
+        phoneInput.addEventListener("input", () => { phoneInput.value = phoneInput.value.replace(/\D/g, "").slice(0, 10); });
+        otpInput.addEventListener("input", () => { otpInput.value = otpInput.value.replace(/\D/g, "").slice(0, 8); });
+        form.addEventListener("submit", (event) => { event.preventDefault(); stage === "phone" ? sendOtp() : verifyOtp(); });
+        resendButton.addEventListener("click", () => sendOtp());
+        changePhoneButton.addEventListener("click", () => {
+          stage = "phone";
+          otpInput.value = "";
+          otpStep.hidden = true;
+          phoneStep.hidden = false;
+          if (resendTimer) window.clearInterval(resendTimer);
+          resendTimer = null;
+          submitLabel.textContent = "Send OTP";
+          setStatus("");
+          resetTurnstile();
+          phoneInput.focus();
+        });
+        window.addEventListener("landing-turnstile-ready", renderTurnstile, { once: true });
+        if (window.turnstile) renderTurnstile();
+      }
+    }
+
+    // Keep one live signup form and move it into the native dialog when the
+    // hero CTA is used. This preserves OTP progress if the dialog is closed.
+    {
+      const dialog = document.getElementById("signup-dialog");
+      const modalSlot = document.getElementById("signup-modal-slot");
+      const signupPanel = document.getElementById("signup");
+      const closeButton = document.getElementById("close-signup-dialog");
+      const signupHome = document.createComment("signup-home");
+
+      if (dialog && modalSlot && signupPanel && closeButton) {
+        signupPanel.before(signupHome);
+
+        const restoreSignupPanel = () => {
+          if (signupPanel.parentNode !== signupHome.parentNode) signupHome.after(signupPanel);
+          document.body.classList.remove("overflow-hidden");
+        };
+
+        document.querySelectorAll("[data-open-signup]").forEach((trigger) => {
+          trigger.addEventListener("click", (event) => {
+            event.preventDefault();
+            modalSlot.appendChild(signupPanel);
+            document.body.classList.add("overflow-hidden");
+            dialog.showModal();
+            window.requestAnimationFrame(() => {
+              const otpVisible = !document.getElementById("signup-otp-step").hidden;
+              document.getElementById(otpVisible ? "signup-otp" : "signup-phone").focus();
+            });
+          });
+        });
+
+        closeButton.addEventListener("click", () => dialog.close());
+        dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
+        dialog.addEventListener("close", restoreSignupPanel);
+      }
     }
   </script>
 </body>
