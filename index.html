@@ -1301,9 +1301,8 @@
           otpStep.hidden = false;
           maskedPhone.textContent = `OTP sent to +91 ${phone.slice(0, 2)}••••${phone.slice(-4)}`;
           submitLabel.textContent = "Verify & Continue";
-          setStatus("OTP sent. Enter the code from your SMS, then complete the security check once more.", "success");
+          setStatus("OTP sent. Enter the code from your SMS to continue.", "success");
           startResendCountdown();
-          resetTurnstile();
           otpInput.focus();
         } catch (error) {
           setStatus(error instanceof Error ? error.message : "Could not send OTP. Please try again.", "error");
@@ -1320,10 +1319,6 @@
           otpInput.focus();
           return;
         }
-        if (!captchaToken) {
-          setStatus("Complete the security verification first.", "error");
-          return;
-        }
         setLoading(true, "Verifying…");
         setStatus("");
         try {
@@ -1331,7 +1326,7 @@
             method: "POST",
             credentials: "same-origin",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ phone: cleanPhone(), otp, name: "", captchaToken }),
+            body: JSON.stringify({ phone: cleanPhone(), otp, name: "" }),
           });
           const data = await readJson(response);
           if (!response.ok) throw new Error(data.error || "Could not verify OTP. Please try again.");
