@@ -426,11 +426,22 @@
     .signup-modal::backdrop { background: rgba(3,14,28,.72); backdrop-filter: blur(8px); }
     .signup-modal[open] { animation: modal-enter .24s cubic-bezier(.2,.8,.2,1) both; }
     .signup-modal__surface {
-      position: relative; max-height: min(92dvh, 760px); overflow-y: auto;
+      position: relative; isolation: isolate; max-height: min(92dvh, 760px); overflow-y: auto;
       border: 1px solid rgba(255,255,255,.16); border-radius: 24px;
-      background: radial-gradient(circle at 95% 0,rgba(241,91,42,.24),transparent 36%),linear-gradient(155deg,#06172c,#0a2647);
-      box-shadow: 0 32px 100px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.12);
+      background: radial-gradient(circle at 92% 4%,rgba(241,91,42,.25),transparent 34%),radial-gradient(circle at 8% 90%,rgba(21,74,115,.5),transparent 44%),linear-gradient(155deg,#041326,#0a284a 58%,#071d37);
+      box-shadow: 0 34px 110px rgba(0,0,0,.56),0 0 0 1px rgba(241,91,42,.08),inset 0 1px 0 rgba(255,255,255,.15);
       overscroll-behavior: contain; scrollbar-width: none;
+    }
+    .signup-modal__surface::before {
+      content: ""; position: absolute; z-index: -1; width: 360px; height: 360px; top: -210px; right: -150px;
+      border-radius: 999px; pointer-events: none;
+      background: conic-gradient(from 120deg,rgba(241,91,42,.5),rgba(255,184,92,.12),rgba(21,74,115,.18),rgba(241,91,42,.5));
+      filter: blur(42px); opacity: .62; animation: premium-ambient 7s ease-in-out infinite alternate;
+    }
+    .signup-modal__surface::after {
+      content: ""; position: absolute; z-index: -1; inset: 0; border-radius: inherit; pointer-events: none;
+      background: linear-gradient(115deg,rgba(255,255,255,.13),transparent 22%,transparent 70%,rgba(241,91,42,.08));
+      box-shadow: inset 0 0 48px rgba(21,74,115,.18);
     }
     .signup-modal__surface::-webkit-scrollbar { display: none; }
     .signup-modal__close {
@@ -441,8 +452,24 @@
     }
     .signup-modal__close:hover { background: rgba(241,91,42,.92); transform: rotate(4deg); }
     .signup-modal__close:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
-    .signup-modal .signup-panel { border: 0 !important; padding: 34px 28px 30px !important; }
+    .signup-modal .signup-panel { z-index: 1; border: 0 !important; padding: 34px 28px 30px !important; }
+    .signup-modal .signup-panel > p:first-child {
+      width: fit-content; color: #ffc49f; text-shadow: 0 0 22px rgba(241,91,42,.3);
+    }
+    .signup-modal #signup-title {
+      color: #fff; background: linear-gradient(105deg,#fff 10%,#eaf4ff 52%,#ffb184 100%);
+      background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-wrap: balance; text-shadow: 0 14px 42px rgba(0,0,0,.18);
+    }
+    .signup-modal #signup-title + p { color: rgba(225,237,251,.78); }
+    .signup-modal[open] .signup-panel > p:first-child,
+    .signup-modal[open] #signup-title,
+    .signup-modal[open] #signup-title + p { animation: premium-copy-enter .42s cubic-bezier(.2,.8,.2,1) both; }
+    .signup-modal[open] #signup-title { animation-delay: .045s; }
+    .signup-modal[open] #signup-title + p { animation-delay: .09s; }
     @keyframes modal-enter { from { opacity: 0; transform: translateY(14px) scale(.975); } to { opacity: 1; transform: none; } }
+    @keyframes premium-copy-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    @keyframes premium-ambient { from { transform: translate3d(-10px,4px,0) scale(.92); } to { transform: translate3d(18px,18px,0) scale(1.08); } }
 
     /* ── Free pill (light + dark variants) ── */
     .free-pill {
