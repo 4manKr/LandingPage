@@ -1237,6 +1237,18 @@
         if (window.turnstile && turnstileWidget !== null) window.turnstile.reset(turnstileWidget);
       }
 
+      function remountTurnstile() {
+        captchaToken = "";
+        setCaptchaState("checking");
+        const host = document.getElementById("landing-turnstile");
+        if (window.turnstile && turnstileWidget !== null) {
+          try { window.turnstile.remove(turnstileWidget); } catch { /* Widget was already detached. */ }
+        }
+        turnstileWidget = null;
+        if (host) host.replaceChildren();
+        window.requestAnimationFrame(renderTurnstile);
+      }
+
       async function readJson(response) {
         const text = await response.text();
         if (!text) return {};
@@ -1352,6 +1364,7 @@
           phoneInput.focus();
         });
         window.addEventListener("landing-turnstile-ready", renderTurnstile, { once: true });
+        window.addEventListener("landing-turnstile-remount", remountTurnstile);
         if (window.turnstile) renderTurnstile();
       }
     }
@@ -1371,6 +1384,7 @@
         const restoreSignupPanel = () => {
           if (signupPanel.parentNode !== signupHome.parentNode) signupHome.after(signupPanel);
           document.body.classList.remove("overflow-hidden");
+          window.dispatchEvent(new Event("landing-turnstile-remount"));
         };
 
         document.querySelectorAll("[data-open-signup]").forEach((trigger) => {
@@ -1379,6 +1393,7 @@
             modalSlot.appendChild(signupPanel);
             document.body.classList.add("overflow-hidden");
             dialog.showModal();
+            window.dispatchEvent(new Event("landing-turnstile-remount"));
             window.requestAnimationFrame(() => {
               const otpVisible = !document.getElementById("signup-otp-step").hidden;
               document.getElementById(otpVisible ? "signup-otp" : "signup-phone").focus();
