@@ -29,10 +29,21 @@ export default async function handler(request, response) {
         "User-Agent": "TAB-India-Landing-Auth/1.0",
       },
       body: JSON.stringify(request.body || {}),
-      redirect: "manual",
+      redirect: "follow",
     });
 
     const contentType = upstream.headers.get("content-type");
+    if (!contentType?.includes("application/json")) {
+      console.error("[landing auth relay] unexpected upstream response", {
+        action,
+        status: upstream.status,
+        url: upstream.url,
+        contentType,
+      });
+      return response.status(502).json({
+        error: "TAB India login is temporarily unavailable. Please try again in a moment.",
+      });
+    }
     if (contentType) response.setHeader("Content-Type", contentType);
 
     const setCookies = typeof upstream.headers.getSetCookie === "function"
