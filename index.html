@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Data-backed NEET UG college predictions, cutoff intelligence and counselling decision support from TAB India.">
+  <meta name="description" content="NEET PG college chances, MD/MS/MDS closing cutoffs, round-wise closing ranks and PG counselling decision support from TAB India.">
   <meta name="theme-color" content="#071b33">
-  <title>Know Your Chances · TAB India</title>
+  <title>NEET PG College Chances · TAB India</title>
   <link rel="icon" type="image/png" href="assets/tab-india-logo-stacked.png">
   <!-- Meta Pixel Code -->
   <script>
@@ -246,6 +246,14 @@
     }
     .open-preview img { display: block; width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; border-radius: 12px; }
     .open-preview--wide img { aspect-ratio: 1279/663; }
+    .open-preview--pg img { aspect-ratio: 1512/820; }
+
+    /* ── PG route chips ───────────────────── */
+    .route-chip { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #fff; border: 1px solid rgba(21,74,115,.12); box-shadow: 0 10px 28px rgba(7,27,51,.06); transition: transform .2s ease, box-shadow .2s ease; }
+    .route-chip:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(7,27,51,.10); }
+    .route-chip__icon { display: grid; place-items: center; width: 38px; height: 38px; flex: 0 0 auto; border-radius: 11px; background: #fff3ee; color: var(--orange); }
+    .route-chip__label { display: block; font-weight: 800; color: var(--navy); font-size: 14px; }
+    .route-chip__desc { display: block; margin-top: 1px; color: #64748b; font-size: 12px; line-height: 1.45; }
     .screen-reveal {
       position: relative;
       clip-path: inset(0 100% 0 0 round 1rem);
@@ -620,6 +628,19 @@
     .pillar-bullet--mint::before { border-color: rgba(241,91,42,.30); }
     .pillar-bullet--orange { background: var(--orange); }
 
+    /* ── Limited-time free offer bar ───────── */
+    .offer-bar {
+      position: relative; z-index: 20; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 12px;
+      padding: 10px 16px; text-align: center; color: #fff; font-size: 13px; font-weight: 700;
+      background: linear-gradient(90deg,#065f46,#16a34a 45%,#065f46);
+    }
+    .offer-bar__tag {
+      display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px;
+      background: #fff; color: #065f46; font-size: 10px; font-weight: 900; letter-spacing: .18em; text-transform: uppercase;
+    }
+    .offer-bar__tag::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: #f15b2a; animation: freePulse 2s ease-out infinite; }
+    .offer-bar a { color: #fff; text-decoration: underline; text-underline-offset: 3px; font-weight: 900; }
+
     /* ── Reveal utility ───────────────────── */
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.visible { opacity: 1; transform: none; }
@@ -694,7 +715,7 @@
 
   <!-- Sticky top navbar (appears on scroll) -->
   <nav id="topnav" class="topnav" aria-label="Primary">
-    <a href="https://www.tabindia.org/" class="topnav__brand" aria-label="TAB India">
+    <a href="https://www.tabindia.org/pg" class="topnav__brand" aria-label="TAB India">
       <img src="assets/tab-india-logo-horizontal.png" alt="TAB India">
     </a>
   </nav>
@@ -709,6 +730,12 @@
   </dialog>
 
   <main id="main">
+    <div class="offer-bar" role="note">
+      <span class="offer-bar__tag">Limited time</span>
+      <span>Every TAB India PG tool is <b>100% FREE</b> right now — no card, no limits.</span>
+      <a href="#signup" data-open-signup>Claim free access →</a>
+    </div>
+
     <!-- ── HERO ─────────────────────────────────────── -->
     <section class="hero-mesh noise relative overflow-hidden text-navy">
       <div class="dot-field absolute inset-0"></div>
@@ -723,14 +750,14 @@
           <div class="mt-5 flex justify-center lg:justify-start">
             <span class="trust-pill">
               <span class="live-dot" aria-hidden="true"></span>
-              NEET 2026 counselling · Live
+              NEET PG 2026 counselling · Live
             </span>
           </div>
-          <p class="eyebrow mt-6 text-[10px] font-extrabold uppercase text-orangebrand sm:text-xs">NEET UG decision intelligence</p>
-          <h1 class="hero-title mt-3 text-[2.7rem] font-extrabold leading-[1.02] tracking-[-.055em] sm:text-[4rem] lg:text-[4.45rem]" aria-label="Know your MBBS and BDS college chances in a minute.">
+          <p class="eyebrow mt-6 text-[10px] font-extrabold uppercase text-orangebrand sm:text-xs">NEET PG decision intelligence</p>
+          <h1 class="hero-title mt-3 text-[2.7rem] font-extrabold leading-[1.02] tracking-[-.055em] sm:text-[4rem] lg:text-[4.45rem]" aria-label="Know your MD, MS, DNB and MDS college chances in a minute.">
             <span class="block">Know your</span>
             <span class="block">
-              <span id="degree-word" class="flip-word gradient-text" aria-hidden="true">MBBS</span>
+              <span id="degree-word" class="flip-word gradient-text" aria-hidden="true">MD / MS</span>
             </span>
             <span class="hero-last-line">
               <span class="safe-text gradient-text">college chances</span>
@@ -738,8 +765,8 @@
             </span>
           </h1>
           <p class="mx-auto mt-6 max-w-xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8 lg:mx-0">
-            Rank-aware predictions, verified cutoffs and every counselling tool — all inside the
-            <span class="font-semibold text-navy">TAB India</span> platform.
+            NEET-PG rank-aware predictions, MD/MS/MDS cutoffs, round-wise closing ranks and every PG counselling tool — all inside
+            <span class="font-semibold text-navy">TAB India PG</span>.
           </p>
           <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:gap-4 lg:justify-start">
             <a href="#signup" data-open-signup class="cta-sheen btn-primary w-full sm:w-auto">
@@ -756,22 +783,22 @@
               <span class="free-chip__check" aria-hidden="true">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
-              Create your profile
-              <span class="free-chip__tag">FREE</span>
+              All PG tools
+              <span class="free-chip__tag">FREE NOW</span>
             </span>
             <span class="free-chip free-chip--hero">
               <span class="free-chip__check" aria-hidden="true">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
-              Eligibility Check
+              Limited-time offer
               <span class="free-chip__tag">100% FREE</span>
             </span>
           </div>
           <p class="mt-3 text-center text-xs font-semibold text-emerald-800/80 lg:text-left">
-            Plus a free preview of every other tool after profile setup.
+            Eligibility, College Chances, Cutoffs, Closing Ranks, Colleges &amp; Content — all free for a limited period.
           </p>
-          <div class="mt-6 flex justify-center lg:justify-start" aria-label="Prediction process: rank mapped, quota checked, matches ready">
-            <div class="decision-flow" aria-hidden="true"><b>Rank mapped</b><i></i><b>Quota checked</b><i></i><b>Matches ready</b></div>
+          <div class="mt-6 flex justify-center lg:justify-start" aria-label="Prediction process: PG rank mapped, routes checked, seats ready">
+            <div class="decision-flow" aria-hidden="true"><b>PG rank mapped</b><i></i><b>Routes checked</b><i></i><b>Seats ready</b></div>
           </div>
         </div>
 
@@ -782,17 +809,14 @@
               <div class="laptop">
                 <div class="laptop-lid">
                   <div class="laptop-display">
-                    <img src="assets/college-chances-desktop.png" width="1279" height="663" alt="TAB India College Chances dashboard on laptop">
+                    <img src="assets/pg/pg-college-chances.jpg" width="1513" height="820" alt="TAB India PG College Chances dashboard on laptop">
                   </div>
                 </div>
                 <div class="laptop-base"></div>
               </div>
             </div>
             <div class="tablet-device">
-              <img src="assets/content-desktop.jpeg" width="2560" height="1600" alt="TAB India counselling content on tablet">
-            </div>
-            <div class="hero-phone">
-              <img src="assets/college-chances-mobile.jpeg" width="572" height="1210" alt="TAB India College Chances on phone">
+              <img src="assets/pg/pg-closing-rank.jpg" width="1515" height="817" alt="TAB India PG Closing Rank Tracker on tablet">
             </div>
 
             <!-- Floating stat badges over the hero device stage (desktop only) -->
@@ -800,13 +824,13 @@
               <span class="flex h-6 w-6 items-center justify-center rounded-full bg-orange-50 text-orangebrand">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
-              <span>1,100+ verified colleges</span>
+              <span>1,987 PG colleges mapped</span>
             </div>
             <div class="float-badge two right-[-1%] top-[62%] hidden lg:flex items-center gap-2 text-[12px] text-navy">
               <span class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-50 text-bluebrand">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M3 12h4l3-8 4 16 3-8h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
-              <span>Rank-aware predictions</span>
+              <span>Round-wise closing ranks</span>
             </div>
           </div>
         </div>
@@ -820,23 +844,23 @@
         <div class="grid divide-y divide-bluebrand/10 border-y border-bluebrand/10 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x lg:divide-y-0">
           <div class="reveal py-9 lg:px-8">
             <span class="pillar-bullet pillar-bullet--orange" aria-hidden="true"></span>
-            <h2 class="mt-5 text-xl font-extrabold">Dynamic Predictor Engine</h2>
-            <p class="mt-3 max-w-sm text-sm leading-6 text-slate-600">Rank-aware predictions using historical cutoffs, current trends and exact category data.</p>
+            <h2 class="mt-5 text-xl font-extrabold">NEET-PG Predictor Engine</h2>
+            <p class="mt-3 max-w-sm text-sm leading-6 text-slate-600">Branch-wise chances from your NEET-PG AIR, category, quota routes and budget cap.</p>
           </div>
           <div class="reveal py-9 sm:border-l sm:border-bluebrand/10 lg:border-l lg:px-8">
-            <p class="text-4xl font-black tracking-tight text-bluebrand">1,100<span class="text-mint">+</span></p>
-            <h2 class="mt-5 text-xl font-extrabold">Verified College Directories</h2>
-            <p class="mt-3 max-w-sm text-sm leading-6 text-slate-600">Fees, seats, bonds and infrastructure intelligence verified for MBBS and BDS colleges.</p>
+            <p class="text-4xl font-black tracking-tight text-bluebrand">1,987</p>
+            <h2 class="mt-5 text-xl font-extrabold">PG Colleges Mapped</h2>
+            <p class="mt-3 max-w-sm text-sm leading-6 text-slate-600">MD, MS, DNB and MDS colleges mapped to State, AIQ and Deemed cutoffs, with fees and OPD/IPD load.</p>
           </div>
           <div class="reveal py-9 sm:border-t sm:border-bluebrand/10 lg:border-t-0 lg:px-8">
             <span class="pillar-bullet pillar-bullet--mint" aria-hidden="true"></span>
-            <h2 class="mt-5 text-xl font-extrabold">Smart Profile Routing</h2>
-            <p class="mt-3 max-w-sm text-sm leading-6 text-slate-600">Recommendations shaped around your quota eligibility, home state and budget.</p>
+            <h2 class="mt-5 text-xl font-extrabold">Smart PG Route Mapping</h2>
+            <p class="mt-3 max-w-sm text-sm leading-6 text-slate-600">MBBS state, domicile, in-service and NRI routes unlocked automatically from your saved profile.</p>
           </div>
           <div class="reveal py-9 sm:border-t sm:border-l sm:border-bluebrand/10 lg:border-t-0 lg:px-8">
             <p class="text-4xl font-black tracking-tight text-bluebrand">12<span class="text-mint">+ Yrs</span></p>
             <h2 class="mt-5 text-xl font-extrabold">Of Rich Counselling Experience</h2>
-            <p class="mt-3 max-w-sm text-sm leading-6 text-slate-600">A decade-plus of guiding students through MBBS &amp; BDS admissions across India.</p>
+            <p class="mt-3 max-w-sm text-sm leading-6 text-slate-600">A decade-plus of guiding doctors through MD, MS, DNB &amp; MDS admissions across India.</p>
           </div>
         </div>
       </div>
@@ -848,48 +872,48 @@
         <div class="text-center">
           <span class="free-ribbon__eyebrow">
             <span class="dot" aria-hidden="true"></span>
-            Try before you pay · No card required
+            Limited-time offer · No card required
           </span>
           <h2 class="hero-title mt-5 text-3xl font-black leading-[1.05] tracking-[-.035em] text-navy sm:text-4xl">
-            Everyone starts <span class="gradient-text">for free.</span>
+            Everything is <span class="gradient-text">free right now.</span>
           </h2>
           <p class="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
-            Set up your profile in a minute, use <span class="font-bold text-emerald-700">Eligibility Check</span> and <span class="font-bold text-emerald-700">Content</span> completely free, and get a free preview of every other TAB India tool.
+            For a limited period, <span class="font-bold text-emerald-700">every TAB India PG tool is 100% free</span> — full access, no preview limits. Set up your PG profile in a minute and use all of it before the offer ends.
           </p>
         </div>
 
         <div class="mt-10 grid gap-5 sm:grid-cols-2 sm:gap-6">
           <div class="free-ribbon__card">
-            <span class="absolute -top-3 left-5 rounded-full bg-white px-3 py-1 text-[10px] font-black uppercase tracking-[.22em] text-emerald-700 shadow-[0_4px_12px_rgba(22,163,74,.14)] ring-1 ring-emerald-200">Free · Setup</span>
+            <span class="absolute -top-3 left-5 rounded-full bg-white px-3 py-1 text-[10px] font-black uppercase tracking-[.22em] text-emerald-700 shadow-[0_4px_12px_rgba(22,163,74,.14)] ring-1 ring-emerald-200">Step 1 · Free</span>
             <div class="flex items-start gap-4">
               <span class="free-ribbon__icon" aria-hidden="true">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM20 21a8 8 0 1 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
               <div class="min-w-0">
                 <h3 class="text-lg font-extrabold text-navy">Create your profile</h3>
-                <p class="mt-1 text-sm leading-6 text-slate-600">Save your rank, category, domicile and preferences — the single input that powers every tool on the platform.</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600">Save your NEET-PG rank, category, domicile, MBBS state and in-service details — the single input that powers every PG tool.</p>
               </div>
             </div>
           </div>
           <div class="free-ribbon__card free-ribbon__card--forever">
-            <span class="absolute -top-3 left-5 rounded-full bg-emerald-600 px-3 py-1 text-[10px] font-black uppercase tracking-[.22em] text-white shadow-[0_6px_16px_rgba(22,163,74,.30)]">Free forever</span>
+            <span class="absolute -top-3 left-5 rounded-full bg-emerald-600 px-3 py-1 text-[10px] font-black uppercase tracking-[.22em] text-white shadow-[0_6px_16px_rgba(22,163,74,.30)]">Limited time · Free</span>
             <div class="flex items-start gap-4">
               <span class="free-ribbon__icon" aria-hidden="true">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M20.5 12a8.5 8.5 0 1 1-17 0 8.5 8.5 0 0 1 17 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
               <div class="min-w-0">
-                <h3 class="text-lg font-extrabold text-navy">Eligibility Check</h3>
-                <p class="mt-1 text-sm leading-6 text-slate-600">See every counselling route open to you — All India, State, Deemed and Management. <span class="font-bold text-emerald-700">100% free. No preview limits.</span></p>
+                <h3 class="text-lg font-extrabold text-navy">Every PG tool, fully unlocked</h3>
+                <p class="mt-1 text-sm leading-6 text-slate-600">Eligibility Planner, College Chances, Closing Cutoff, Closing Rank, Colleges and Content. <span class="font-bold text-emerald-700">100% free for a limited time. No preview limits.</span></p>
               </div>
             </div>
           </div>
         </div>
 
         <p class="mt-8 text-center text-sm text-slate-700">
-          <span class="font-bold text-emerald-700">Plus Content stays free forever</span> — and every other tool (College Chances, Cutoff Tracker, College Directory) is free to preview after profile setup.
+          <span class="font-bold text-emerald-700">This free access is for a limited period only</span> — create your account now to lock in full access while it lasts.
         </p>
         <p class="mt-3 text-center text-xs font-bold uppercase tracking-[.18em] text-emerald-800/70">
-          No signup gate · No credit card · Eligibility &amp; Content — no limits
+          No credit card · Full access · Free for a limited time
         </p>
       </div>
     </section>
@@ -898,125 +922,141 @@
     <section id="tour" class="overflow-hidden bg-[#f7f9fc]">
       <div class="mx-auto max-w-4xl px-5 pb-16 pt-20 text-center sm:px-8 sm:pb-20 sm:pt-28">
         <p class="eyebrow text-xs font-extrabold uppercase text-orangebrand">One profile. Every possibility.</p>
-        <h2 class="mt-4 text-4xl font-black leading-tight tracking-[-.04em] sm:text-5xl">See every tool <span class="serif-accent gradient-text">in action.</span></h2>
-        <p class="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-600"><span class="font-bold text-emerald-700">Eligibility Check and Content are completely free forever</span> — and every other tool is free to preview once your profile is set up.</p>
+        <h2 class="mt-4 text-4xl font-black leading-tight tracking-[-.04em] sm:text-5xl">See every PG tool <span class="serif-accent gradient-text">in action.</span></h2>
+        <p class="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-600"><span class="font-bold text-emerald-700">Every tool below is 100% free for a limited time</span> — full access, no preview limits, no card.</p>
       </div>
 
       <section class="border-t border-bluebrand/10 bg-white py-16 sm:py-24">
         <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.28fr_.72fr] lg:gap-16 lg:px-10">
           <figure class="reveal order-2 lg:order-1">
-            <div class="open-preview screen-reveal"><img src="assets/eligibility-check-desktop.jpeg" width="2560" height="1600" alt="TAB India Eligibility Check dashboard" loading="lazy"></div>
+            <div class="open-preview open-preview--pg screen-reveal"><img src="assets/pg/pg-eligibility.jpg" width="1511" height="825" alt="TAB India PG Detailed Eligibility Analysis" loading="lazy"></div>
           </figure>
           <div class="reveal order-1 lg:order-2">
-            <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">
-              01 · Eligibility Check
-              <span class="free-pill">100% Free</span>
+            <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">01 · Eligibility Planner
+              <span class="free-pill">Free now</span>
             </p>
-            <h3 class="mt-4 text-3xl font-black tracking-[-.035em] sm:text-4xl">Know every counselling route open to you.</h3>
-            <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">Instantly identify your All India, State, Deemed and Management eligibility using your domicile, category, education and saved profile details.</p>
+            <h3 class="mt-4 text-3xl font-black tracking-[-.035em] sm:text-4xl">Know every PG route your profile unlocks.</h3>
+            <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">Your MBBS state, domicile, in-service record and NRI status are read from one locked profile — so you instantly see which State, All India, Deemed and NRI quotas you actually qualify for.</p>
             <div class="mt-6">
               <span class="free-tour-banner">
-                <span class="stamp">FREE FOREVER</span>
-                No card, no paywall, no preview limits — this one's always free.
+                <span class="stamp">LIMITED TIME</span>
+                All PG tools are free right now — no card, no paywall, no limits.
               </span>
             </div>
           </div>
         </div>
       </section>
-
       <section class="border-t border-bluebrand/10 bg-[#f7f9fc] py-16 sm:py-24">
         <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[.72fr_1.28fr] lg:gap-16 lg:px-10">
           <div class="reveal">
-            <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">02 · College Chances</p>
-            <h3 class="mt-4 text-3xl font-black tracking-[-.035em] sm:text-4xl">Know where your rank can take you.</h3>
-            <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">See personalized ambitious, realistic and safer college possibilities based on your rank, category, quota eligibility and budget.</p>
+            <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">02 · College Chances
+              <span class="free-pill">Free now</span>
+            </p>
+            <h3 class="mt-4 text-3xl font-black tracking-[-.035em] sm:text-4xl">See where your NEET-PG rank can take you.</h3>
+            <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">Enter your NEET-PG AIR, set a budget cap and get branch-wise High, Good, Moderate and Low chances across every route you are eligible for.</p>
+            <ul class="mt-6 space-y-3 text-sm font-semibold text-slate-700">
+              <li class="flex gap-3"><span class="check-icon mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange-50 text-orangebrand"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>AIQ, DNB / NBEMS, Deemed and MCC exclusive seats</span></li>
+              <li class="flex gap-3"><span class="check-icon mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange-50 text-orangebrand"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>MBBS-eligible state, domicile state and in-service state quotas</span></li>
+              <li class="flex gap-3"><span class="check-icon mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange-50 text-orangebrand"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Fee-aware results with institute preference routes</span></li>
+            </ul>
           </div>
           <figure class="reveal">
-            <div class="open-preview open-preview--wide screen-reveal screen-right"><img src="assets/college-chances-desktop.png" width="1279" height="663" alt="TAB India College Chances dashboard" loading="lazy"></div>
+            <div class="open-preview open-preview--pg screen-reveal screen-right"><img src="assets/pg/pg-college-chances.jpg" width="1513" height="820" alt="TAB India PG College Chances dashboard" loading="lazy"></div>
           </figure>
         </div>
       </section>
-
       <section class="border-t border-bluebrand/10 bg-white py-16 sm:py-24">
         <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.28fr_.72fr] lg:gap-16 lg:px-10">
           <figure class="reveal order-2 lg:order-1">
-            <div class="open-preview screen-reveal"><img src="assets/closing-cutoff-desktop.jpeg" width="2560" height="1600" alt="TAB India Closing Cutoff Tracker" loading="lazy"></div>
+            <div class="open-preview open-preview--pg screen-reveal"><img src="assets/pg/pg-closing-cutoff.jpg" width="1517" height="816" alt="TAB India PG Closing Cutoff Tracker" loading="lazy"></div>
           </figure>
           <div class="reveal order-1 lg:order-2">
-            <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">03 · Cutoff Tracker</p>
-            <h3 class="mt-4 text-3xl font-black tracking-[-.035em] sm:text-4xl">Read the cutoff story clearly.</h3>
-            <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">Compare verified closing cutoffs across All India, Deemed and State counselling routes without searching through scattered documents.</p>
+            <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">03 · Closing Cutoff
+              <span class="free-pill">Free now</span>
+            </p>
+            <h3 class="mt-4 text-3xl font-black tracking-[-.035em] sm:text-4xl">Read MD / MS / MDS cutoffs clearly.</h3>
+            <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">Explore state-wise and MCC All India closing cutoffs for every branch, with category, quota, fee and OPD/IPD load side by side — plus PWD and Women filters.</p>
           </div>
         </div>
       </section>
-
       <section class="border-t border-bluebrand/10 bg-[#f7f9fc] py-16 sm:py-24">
         <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[.72fr_1.28fr] lg:gap-16 lg:px-10">
           <div class="reveal">
-            <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">04 · College Directory</p>
-            <h3 class="mt-4 text-3xl font-black tracking-[-.035em] sm:text-4xl">Research every college in one place.</h3>
-            <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">Explore verified fees, seat matrices, bonds, infrastructure details and other essential information across 1,100+ colleges.</p>
+            <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">04 · Closing Rank
+              <span class="free-pill">Free now</span>
+            </p>
+            <h3 class="mt-4 text-3xl font-black tracking-[-.035em] sm:text-4xl">Track how seats closed, round by round.</h3>
+            <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">Compare 2025 R1 to R4 closing ranks for MCC and state counselling with dedicated MD / MS / MDS branch data — so you know when a seat is worth waiting for.</p>
           </div>
           <figure class="reveal">
-            <div class="open-preview screen-reveal screen-right"><img src="assets/colleges-desktop.jpeg" width="2560" height="1600" alt="TAB India Medical College Directory" loading="lazy"></div>
+            <div class="open-preview open-preview--pg screen-reveal screen-right"><img src="assets/pg/pg-closing-rank.jpg" width="1515" height="817" alt="TAB India PG Closing Rank Tracker" loading="lazy"></div>
           </figure>
         </div>
       </section>
-
       <section class="border-y border-bluebrand/10 bg-white py-16 sm:py-24">
         <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.28fr_.72fr] lg:gap-16 lg:px-10">
           <figure class="reveal order-2 lg:order-1">
-            <div class="open-preview screen-reveal"><img src="assets/content-desktop.jpeg" width="2560" height="1600" alt="TAB India Counselling Content library" loading="lazy"></div>
+            <div class="open-preview open-preview--pg screen-reveal"><img src="assets/pg/pg-colleges.jpg" width="1510" height="817" alt="TAB India PG medical colleges directory" loading="lazy"></div>
           </figure>
           <div class="reveal order-1 lg:order-2">
-            <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">
-              05 · Content
-              <span class="free-pill">Free</span>
+            <p class="text-sm font-black uppercase tracking-[.15em] text-orangebrand">05 · Colleges
+              <span class="free-pill">Free now</span>
             </p>
-            <h3 class="mt-4 text-3xl font-black tracking-[-.035em] sm:text-4xl">Understand counselling before deciding.</h3>
-            <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">Access focused explainers and practical guidance that turn complicated counselling rules into clear next steps.</p>
-            <div class="mt-6">
-              <span class="free-tour-banner">
-                <span class="stamp">FREE FOREVER</span>
-                Every explainer, every guide — always free to read.
-              </span>
-            </div>
+            <h3 class="mt-4 text-3xl font-black tracking-[-.035em] sm:text-4xl">Research 1,987 PG colleges in one place.</h3>
+            <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">Every PG college mapped to State, AIQ or Deemed cutoffs — with yearly fees, programs offered (MD / MS / DNB) and full institute details.</p>
           </div>
         </div>
       </section>
     </section>
 
-    <!-- ── MOBILE MOMENTS ───────────────────────────── -->
-    <section class="relative overflow-hidden bg-white py-20 sm:py-32">
+
+    <!-- ── PG COUNSELLING ROUTES ────────────────────── -->
+    <section class="relative overflow-hidden bg-white py-20 sm:py-28">
       <div class="absolute -right-36 top-20 h-96 w-96 rounded-full bg-orange-100/60 blur-3xl"></div>
       <div class="absolute -left-52 bottom-0 h-[32rem] w-[32rem] rounded-full bg-blue-100/70 blur-3xl"></div>
-      <div class="relative mx-auto grid max-w-7xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-[1fr_1fr] lg:px-10">
-        <div class="order-2 flex items-end justify-center gap-4 sm:gap-8 lg:order-1">
-          <div class="phone phone-left aspect-[572/1185] w-[46%] max-w-[250px]">
-            <img src="assets/content-mobile.jpeg" width="572" height="1280" alt="TAB India Content library mobile view" loading="lazy">
-          </div>
-          <div class="phone phone-right aspect-[572/1185] w-[48%] max-w-[260px]">
-            <img src="assets/college-chances-mobile.jpeg" width="572" height="1280" alt="TAB India College Chances mobile view" loading="lazy">
-          </div>
+      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-[.9fr_1.1fr] lg:gap-16 lg:px-10">
+        <div class="reveal">
+          <p class="eyebrow text-xs font-extrabold uppercase text-orangebrand">Every PG counselling route, one view</p>
+          <h2 class="mt-4 text-4xl font-black leading-tight tracking-[-.04em] sm:text-5xl">From 18,000+ possibilities to <span class="serif-accent gradient-text">your</span> shortlist.</h2>
+          <p class="mt-6 max-w-xl text-base leading-7 text-slate-600">NEET-PG counselling runs on many parallel routes. TAB India PG checks each one against your profile and rank, then shows only the seats that are genuinely open to you.</p>
+          <a href="#signup" data-open-signup class="cta-sheen btn-primary mt-8 w-full sm:w-auto">
+            Get free access now
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
-        <div class="reveal order-1 lg:order-2">
-          <p class="eyebrow text-xs font-extrabold uppercase text-orangebrand">Counselling confidence in your pocket</p>
-          <h2 class="mt-4 text-4xl font-black leading-tight tracking-[-.04em] sm:text-5xl">From confusion to <span class="serif-accent gradient-text">clarity</span> — right on your phone.</h2>
-          <p class="mt-6 max-w-xl text-base leading-7 text-slate-600">Most counselling decisions happen between classes, commutes and family conversations. TAB India keeps your content library and college predictions readable, fast and ready on any screen.</p>
-          <div class="mt-8 space-y-5">
-            <div class="flex gap-4">
-              <span class="check-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange-50 text-orangebrand">
-                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <div><h3 class="font-extrabold">College Chances</h3><p class="mt-1 text-sm leading-6 text-slate-600">Run and revisit personalized predictions without losing your profile context.</p></div>
+        <div class="grid gap-3 sm:grid-cols-2">
+            <div class="route-chip reveal">
+              <span class="route-chip__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9S14.5 18.3 12 21c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z" stroke="currentColor" stroke-width="2"/></svg></span>
+              <span class="min-w-0"><span class="route-chip__label">All India Quota (MCC)</span><span class="route-chip__desc">50% AIQ seats in government colleges</span></span>
             </div>
-            <div class="flex gap-4">
-              <span class="check-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange-50 text-orangebrand">
-                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <div><h3 class="font-extrabold">Expert Content</h3><p class="mt-1 text-sm leading-6 text-slate-600">Watch focused counselling explainers exactly when a choice needs clarity.</p></div>
+            <div class="route-chip reveal">
+              <span class="route-chip__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="currentColor" stroke-width="2"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+              <span class="min-w-0"><span class="route-chip__label">DNB / NBEMS</span><span class="route-chip__desc">DNB counselling seats nationwide</span></span>
             </div>
-          </div>
+            <div class="route-chip reveal">
+              <span class="route-chip__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+              <span class="min-w-0"><span class="route-chip__label">Deemed &amp; Paid</span><span class="route-chip__desc">Private and deemed university routes</span></span>
+            </div>
+            <div class="route-chip reveal">
+              <span class="route-chip__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+              <span class="min-w-0"><span class="route-chip__label">MCC Exclusive</span><span class="route-chip__desc">Seats counselled only through MCC</span></span>
+            </div>
+            <div class="route-chip reveal">
+              <span class="route-chip__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="2"/></svg></span>
+              <span class="min-w-0"><span class="route-chip__label">MBBS-Eligible State</span><span class="route-chip__desc">State quota from where you did MBBS</span></span>
+            </div>
+            <div class="route-chip reveal">
+              <span class="route-chip__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="2"/></svg></span>
+              <span class="min-w-0"><span class="route-chip__label">Domicile State</span><span class="route-chip__desc">State quota from your saved domicile</span></span>
+            </div>
+            <div class="route-chip reveal">
+              <span class="route-chip__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" stroke-width="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2"/></svg></span>
+              <span class="min-w-0"><span class="route-chip__label">In-Service State</span><span class="route-chip__desc">Quota unlocked by your service record</span></span>
+            </div>
+            <div class="route-chip reveal">
+              <span class="route-chip__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke="currentColor" stroke-width="2"/></svg></span>
+              <span class="min-w-0"><span class="route-chip__label">NRI &amp; Institute Preference</span><span class="route-chip__desc">NRI sub-quota and institutional seats</span></span>
+            </div>
         </div>
       </div>
     </section>
@@ -1029,46 +1069,46 @@
         <div class="mx-auto max-w-3xl text-center">
           <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[11px] font-black uppercase tracking-[.2em] text-white/80 backdrop-blur">
             <span class="h-1.5 w-1.5 rounded-full bg-orange-300 shadow-[0_0_0_4px_rgba(241,91,42,.18)]"></span>
-            Continue on the platform
+            Free for a limited time
           </span>
           <h2 class="hero-title mx-auto mt-6 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-[-.04em] sm:text-6xl">
-            The full platform lives on
-            <span class="block gold-text">tabindia.org</span>
+            The full PG platform lives on
+            <span class="block gold-text">tabindia.org/pg</span>
           </h2>
           <p class="mx-auto mt-6 max-w-xl text-base leading-7 text-blue-100/75 sm:text-lg">
-            Log in, build your profile, and unlock predictions, cutoffs, the college directory and counselling content — all under one roof.
+            Log in, build your PG profile, and unlock college chances, closing cutoffs, round-wise closing ranks, 1,987 PG colleges and counselling content — all under one roof.
           </p>
         </div>
 
         <div class="glass-card mt-14 p-6 sm:p-10">
           <div class="grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-14">
             <div>
-              <p class="text-xs font-extrabold uppercase tracking-[.18em] text-orange-200">What's waiting for you</p>
+              <p class="text-xs font-extrabold uppercase tracking-[.18em] text-orange-200">Everything is free right now</p>
               <div class="mt-5 grid gap-3">
-                <a href="https://www.tabindia.org/" class="launch-tile launch-tile--free" rel="noopener">
+                <a href="https://www.tabindia.org/pg" class="launch-tile launch-tile--free" rel="noopener">
                   <span class="num">01</span>
                   <span class="min-w-0">
-                    <span class="label block">Eligibility Check <span class="free-pill free-pill--dark">Free Forever</span></span>
-                    <span class="desc block">Every counselling route mapped in seconds — always free.</span>
+                    <span class="label block">Eligibility Planner <span class="free-pill free-pill--dark">Free</span></span>
+                    <span class="desc block">Every PG counselling route mapped in seconds.</span>
                   </span>
                 </a>
-                <a href="https://www.tabindia.org/" class="launch-tile" rel="noopener">
+                <a href="https://www.tabindia.org/pg" class="launch-tile launch-tile--free" rel="noopener">
                   <span class="num">02</span>
-                  <span class="min-w-0"><span class="label block">College Chances</span><span class="desc block">Ambitious, realistic and safe matches for your rank.</span></span>
+                  <span class="min-w-0"><span class="label block">College Chances <span class="free-pill free-pill--dark">Free</span></span><span class="desc block">Branch-wise chances for your NEET-PG rank and budget.</span></span>
                 </a>
-                <a href="https://www.tabindia.org/" class="launch-tile" rel="noopener">
+                <a href="https://www.tabindia.org/pg" class="launch-tile launch-tile--free" rel="noopener">
                   <span class="num">03</span>
-                  <span class="min-w-0"><span class="label block">Cutoff Tracker</span><span class="desc block">Verified closing cutoffs, cleanly compared.</span></span>
+                  <span class="min-w-0"><span class="label block">Closing Cutoff &amp; Closing Rank <span class="free-pill free-pill--dark">Free</span></span><span class="desc block">MD / MS / MDS cutoffs and R1–R4 closing ranks.</span></span>
                 </a>
-                <a href="https://www.tabindia.org/" class="launch-tile" rel="noopener">
+                <a href="https://www.tabindia.org/pg" class="launch-tile launch-tile--free" rel="noopener">
                   <span class="num">04</span>
-                  <span class="min-w-0"><span class="label block">College Directory</span><span class="desc block">1,100+ MBBS &amp; BDS profiles, verified.</span></span>
+                  <span class="min-w-0"><span class="label block">PG Colleges <span class="free-pill free-pill--dark">Free</span></span><span class="desc block">1,987 PG colleges mapped to State, AIQ &amp; Deemed.</span></span>
                 </a>
-                <a href="https://www.tabindia.org/" class="launch-tile launch-tile--free" rel="noopener">
+                <a href="https://www.tabindia.org/pg" class="launch-tile launch-tile--free" rel="noopener">
                   <span class="num">05</span>
                   <span class="min-w-0">
                     <span class="label block">Counselling Content <span class="free-pill free-pill--dark">Free</span></span>
-                    <span class="desc block">Focused explainers when a decision needs clarity — always free.</span>
+                    <span class="desc block">Focused explainers when a decision needs clarity.</span>
                   </span>
                 </a>
               </div>
@@ -1076,8 +1116,8 @@
 
             <div id="signup" class="signup-panel lg:border-l lg:border-white/10 lg:pl-12" aria-labelledby="signup-title">
               <p class="text-xs font-extrabold uppercase tracking-[.18em] text-orange-200">Your next best move starts here</p>
-              <h3 id="signup-title" class="mt-3 text-2xl font-black leading-tight tracking-[-.025em] text-white sm:text-3xl">See the college possibilities your rank could unlock.</h3>
-              <p class="mt-3 text-sm leading-6 text-blue-100/70">Get ahead of the counselling rush with personalised routes, cutoffs and college matches built around your rank.</p>
+              <h3 id="signup-title" class="mt-3 text-2xl font-black leading-tight tracking-[-.025em] text-white sm:text-3xl">See the PG seats your NEET-PG rank could unlock.</h3>
+              <p class="mt-3 text-sm leading-6 text-blue-100/70">Every PG tool is 100% free for a limited time. Get personalised routes, cutoffs and branch-wise college matches before the offer ends.</p>
 
               <form id="landing-signup-form" class="mt-7 space-y-4" novalidate>
                 <div id="signup-phone-step">
@@ -1132,8 +1172,8 @@
       <div class="flex items-center gap-3">
         <img src="assets/tab-india-logo-horizontal.png" alt="TAB India" class="h-8 w-auto opacity-90">
       </div>
-      <p>© 2026 TAB India · NEET UG decision intelligence</p>
-      <a href="https://www.tabindia.org/" class="font-semibold text-blue-100/85 underline decoration-blue-200/25 underline-offset-4 transition hover:text-white" rel="noopener">Visit tabindia.org →</a>
+      <p>© 2026 TAB India · NEET PG decision intelligence</p>
+      <a href="https://www.tabindia.org/pg" class="font-semibold text-blue-100/85 underline decoration-blue-200/25 underline-offset-4 transition hover:text-white" rel="noopener">Visit tabindia.org/pg →</a>
     </div>
   </footer>
 
@@ -1151,12 +1191,13 @@
     const degreeWord = document.getElementById("degree-word");
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (degreeWord && !reduceMotion) {
-      let showMBBS = true;
+      const degrees = ["MD / MS", "DNB", "MDS"];
+      let degreeIndex = 0;
       window.setInterval(() => {
         degreeWord.classList.add("is-changing");
         window.setTimeout(() => {
-          showMBBS = !showMBBS;
-          degreeWord.textContent = showMBBS ? "MBBS" : "BDS";
+          degreeIndex = (degreeIndex + 1) % degrees.length;
+          degreeWord.textContent = degrees[degreeIndex];
         }, 250);
         window.setTimeout(() => degreeWord.classList.remove("is-changing"), 570);
       }, 2200);
@@ -1208,6 +1249,7 @@
     // number and writes the shared .tabindia.org session cookie before redirect.
     {
       const AUTH_ENDPOINT = "/api/auth";
+      const PG_HOME = "https://www.tabindia.org/pg";
       const TURNSTILE_SITE_KEY = "0x4AAAAAADstLDxnf3UqfaiJ";
       const form = document.getElementById("landing-signup-form");
       const phoneInput = document.getElementById("signup-phone");
@@ -1368,9 +1410,9 @@
           const data = await readJson(response);
           if (!response.ok) throw new Error(data.error || "Could not verify OTP. Please try again.");
           const isNew = Boolean(data.is_new);
-          setStatus(isNew ? "Account created. Opening your new TAB India profile…" : "Welcome back. Opening your saved TAB India account…", "success");
+          setStatus(isNew ? "Account created. Opening TAB India PG…" : "Welcome back. Opening TAB India PG…", "success");
           if (typeof window.fbq === "function" && isNew) window.fbq("track", "CompleteRegistration");
-          window.setTimeout(() => window.location.assign(data.redirect || "https://www.tabindia.org/college-chances"), 550);
+          window.setTimeout(() => window.location.assign(PG_HOME), 550);
         } catch (error) {
           setStatus(error instanceof Error ? error.message : "Could not verify OTP. Please try again.", "error");
           resetTurnstile();
