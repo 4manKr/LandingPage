@@ -1405,7 +1405,7 @@
             method: "POST",
             credentials: "same-origin",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ phone: cleanPhone(), otp, name: "" }),
+            body: JSON.stringify({ phone: cleanPhone(), otp, name: "", userType: "PG" }),
           });
           const data = await readJson(response);
           if (!response.ok) throw new Error(data.error || "Could not verify OTP. Please try again.");
