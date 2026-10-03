@@ -1337,6 +1337,21 @@
 
       function cleanPhone() { return phoneInput.value.replace(/\D/g, "").slice(-10); }
 
+      // Follow the API's redirect when it points at TAB India (relative paths
+      // resolve against www, not this landing host); otherwise fall back to /pg.
+      // A redirect back to this landing page is ignored to avoid a reload loop.
+      function resolveRedirect(target) {
+        if (typeof target !== "string" || !target.trim()) return PG_HOME;
+        try {
+          const url = new URL(target.trim(), "https://www.tabindia.org");
+          const trusted = url.hostname === "tabindia.org" || url.hostname.endsWith(".tabindia.org");
+          if (url.protocol !== "https:" || !trusted || url.hostname === window.location.hostname) return PG_HOME;
+          return url.href;
+        } catch {
+          return PG_HOME;
+        }
+      }
+
       function startResendCountdown(seconds = 30) {
         if (resendTimer) window.clearInterval(resendTimer);
         let remaining = seconds;
@@ -1412,7 +1427,7 @@
           const isNew = Boolean(data.is_new);
           setStatus(isNew ? "Account created. Opening TAB India PG…" : "Welcome back. Opening TAB India PG…", "success");
           if (typeof window.fbq === "function" && isNew) window.fbq("track", "CompleteRegistration");
-          window.setTimeout(() => window.location.assign(PG_HOME), 550);
+          window.setTimeout(() => window.location.assign(resolveRedirect(data.redirect)), 550);
         } catch (error) {
           setStatus(error instanceof Error ? error.message : "Could not verify OTP. Please try again.", "error");
           resetTurnstile();
